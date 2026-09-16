@@ -1,0 +1,5 @@
+# chỉ đưa trang web lên GitHub Pages, không đưa ảnh gốc hay file Word
+/*
+!/.gitignore
+!/index.html
+!/img/
