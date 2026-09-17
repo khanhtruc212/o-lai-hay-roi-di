@@ -1,19 +1,25 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Workshop online 2 buổi: làm rõ nên ở lại hay rời đi, theo phương pháp La Bàn Bản Thể™.">
 <title>Ở Lại Hay Rời Đi?</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&display=swap">
 
 <style>
-/* ================= tokens — xanh ngọc theo màu thương hiệu S.O.I ================= */
-/* bare :root holds the complete light palette */
+/* ================= tokens — xanh ngọc S.O.I + cam ấm làm điểm nhấn ================= */
 :root{
+  color-scheme:light dark;
   --paper:#f1f6f7;
   --surface:#ffffff;
   --surface-2:#dbebec;
   --wash:#e6f1f2;
   --ink:#0c2a2c;
-  --ink-soft:#2a4c4e;
-  --muted:#5c7b7d;
+  --ink-soft:#23484a;
+  --muted:#4f6f71;
   --rule:#bad7d9;
   --rule-soft:#d5e7e8;
   --accent:#067e83;          /* S.O.I — teal đậm trong khe chữ S */
@@ -22,16 +28,24 @@
   --accent-tint:rgba(6,126,131,.12);
   --focus:#067e83;
 
+  /* cam ấm — dùng cho mục "Dành cho", số thứ tự, điểm nhấn cảm xúc */
+  --warm:#e0702c;
+  --warm-strong:#bf5417;     /* nền cam đặc, chữ trắng vẫn đủ tương phản */
+  --warm-text:#a4460f;
+  --warm-on:#ffffff;
+  --warm-soft:#fcebdd;
+  --warm-tint:rgba(224,112,44,.14);
+
   /* dải ngọc thẫm — giữ nguyên màu ở cả hai chế độ sáng/tối */
   --band:#073f42;
   --band-ink:#e8f6f6;
-  --band-muted:#9ac9cb;
+  --band-muted:#a9d3d5;
   --band-accent:#6fcccd;     /* S.O.I — turquoise chính */
 
-  --measure:34rem;   /* cột đọc ~62 ký tự */
-  --block:52rem;     /* khối rộng: bảng vé */
-  --wide:64rem;
-  --xwide:72rem;     /* mục ảnh–chữ hai cột, để ảnh đủ lớn */
+  --measure:40rem;
+  --block:60rem;
+  --wide:68rem;
+  --xwide:74rem;
 
   --f-display:"Newsreader",Georgia,"Times New Roman",serif;
   --f-body:"Be Vietnam Pro","Segoe UI",system-ui,-apple-system,sans-serif;
@@ -43,8 +57,8 @@
     --surface-2:#103133;
     --wash:#0a2627;
     --ink:#e3f1f2;
-    --ink-soft:#bed7d9;
-    --muted:#86a6a8;
+    --ink-soft:#c6dddf;
+    --muted:#93b1b3;
     --rule:#1e4749;
     --rule-soft:#163a3b;
     --accent:#6fcccd;
@@ -52,9 +66,15 @@
     --accent-on:#04282a;
     --accent-tint:rgba(111,204,205,.16);
     --focus:#6fcccd;
+    --warm:#f29a5c;
+    --warm-strong:#c4581b;
+    --warm-text:#f6b184;
+    --warm-on:#ffffff;
+    --warm-soft:#2e2118;
+    --warm-tint:rgba(242,154,92,.16);
     --band:#072f31;
     --band-ink:#e3f1f2;
-    --band-muted:#93bfc1;
+    --band-muted:#a2c8ca;
     --band-accent:#6fcccd;
   }
 }
@@ -64,8 +84,8 @@
   --surface-2:#103133;
   --wash:#0a2627;
   --ink:#e3f1f2;
-  --ink-soft:#bed7d9;
-  --muted:#86a6a8;
+  --ink-soft:#c6dddf;
+  --muted:#93b1b3;
   --rule:#1e4749;
   --rule-soft:#163a3b;
   --accent:#6fcccd;
@@ -73,90 +93,118 @@
   --accent-on:#04282a;
   --accent-tint:rgba(111,204,205,.16);
   --focus:#6fcccd;
+  --warm:#f29a5c;
+  --warm-strong:#c4581b;
+  --warm-text:#f6b184;
+  --warm-on:#ffffff;
+  --warm-soft:#2e2118;
+  --warm-tint:rgba(242,154,92,.16);
   --band:#072f31;
   --band-ink:#e3f1f2;
-  --band-muted:#93bfc1;
+  --band-muted:#a2c8ca;
   --band-accent:#6fcccd;
 }
 
 /* ================= base ================= */
 *{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{
   margin:0;
   background:var(--paper);
   color:var(--ink);
   font-family:var(--f-body);
-  font-size:17px;
+  font-size:18px;
   line-height:1.72;
   -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
 }
 img{max-width:100%}
 :focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:2px}
 
-/* mọi khối nội dung chia sẻ một trục giữa duy nhất */
 .wrap{width:100%;max-width:var(--wide);margin-inline:auto;padding-inline:24px}
 .measure{max-width:var(--measure);margin-inline:auto}
 .block{max-width:var(--block);margin-inline:auto}
 .xwide{max-width:var(--xwide);margin-inline:auto}
 
-/* ảnh chụp làm nền mờ: ::before nằm trên màu nền của mục, dưới phần chữ */
+/* ảnh chụp làm nền mờ */
 .photo-bg{position:relative;isolation:isolate;overflow:hidden}
 .photo-bg::before{
   content:"";position:absolute;inset:0;z-index:-1;
   background-image:url(img/bg-leaves.jpg);
   background-size:cover;background-position:18% center;
-  opacity:.09;
+  opacity:.12;
 }
-.closing.photo-bg::before{opacity:.2;background-position:30% center}
+.closing.photo-bg::before{opacity:.22;background-position:30% center}
+
+/* họa tiết la bàn chìm ở góc mục */
+.deco{position:relative;isolation:isolate;overflow:hidden}
+.deco::after{
+  content:"";position:absolute;z-index:-1;pointer-events:none;
+  width:min(560px,90vw);aspect-ratio:1;right:-140px;top:-120px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none' stroke='%23067e83'%3E%3Ccircle cx='100' cy='100' r='96' stroke-width='1'/%3E%3Ccircle cx='100' cy='100' r='74' stroke-width='.8'/%3E%3Ccircle cx='100' cy='100' r='40' stroke-width='.6'/%3E%3Cpath d='M100 0v200M0 100h200M29 29l142 142M171 29L29 171' stroke-width='.5'/%3E%3Cpath d='M100 18l12 70-12 12-12-12z' stroke-width='1.2'/%3E%3Cpath d='M100 182l-12-70 12-12 12 12z' stroke-width='.8'/%3E%3C/svg%3E") center/contain no-repeat;
+  opacity:.13;
+}
+.deco.deco-left::after{right:auto;left:-160px;top:auto;bottom:-140px}
+.closing.deco::after,.band.deco::after{filter:brightness(2.4);opacity:.12}
 
 p{margin:0}
 h1,h2,h3{margin:0;text-wrap:balance;font-weight:400}
 
 .eyebrow{
-  font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
   color:var(--accent-text);margin:0;
 }
 .eyebrow .dot{opacity:.55}
 
-/* line-height rộng hơn mức thường gặp: dấu tiếng Việt cần chỗ thở */
 .h2{
   font-family:var(--f-display);
-  font-size:clamp(1.55rem,1.05rem + 2.1vw,2.3rem);
-  line-height:1.26;letter-spacing:-.012em;font-weight:500;
+  font-size:clamp(1.9rem,1.3rem + 2.4vw,2.75rem);
+  line-height:1.22;letter-spacing:-.012em;font-weight:500;
 }
-.lede{font-size:1.06rem;color:var(--ink-soft)}
-.small{font-size:.925rem;color:var(--muted)}
+/* gạch cam nhỏ dưới mỗi tiêu đề mục */
+.head .h2::after{
+  content:"";display:block;width:56px;height:4px;border-radius:2px;
+  background:var(--warm);margin-top:18px;
+}
+.head.center .h2::after{margin-inline:auto}
+.lede{font-size:1.14rem;color:var(--ink-soft)}
+.small{font-size:1rem;color:var(--muted)}
 
 .pull{
-  font-family:var(--f-display);font-style:italic;font-weight:300;
-  font-size:clamp(1.3rem,1rem + 1.4vw,1.72rem);line-height:1.46;
+  font-family:var(--f-display);font-style:italic;font-weight:400;
+  font-size:clamp(1.45rem,1.1rem + 1.5vw,1.95rem);line-height:1.42;
   letter-spacing:-.01em;color:var(--ink);
+  border-left:4px solid var(--warm);padding:4px 0 4px 22px;
 }
 
-section{padding-block:clamp(56px,7vw,92px);border-top:1px solid var(--rule-soft)}
+section{padding-block:clamp(64px,8vw,104px);border-top:1px solid var(--rule-soft)}
 section:first-of-type{border-top:0}
 .tint{background:var(--surface-2);border-top-color:transparent}
-.col{display:flex;flex-direction:column;gap:22px}
+.warmth{background:var(--warm-soft);border-top-color:transparent}
+.band{background:var(--band);color:var(--band-ink);border-top-color:transparent}
+.col{display:flex;flex-direction:column;gap:24px}
 .col-tight{display:flex;flex-direction:column;gap:12px}
 .head{display:flex;flex-direction:column;gap:14px;margin-bottom:6px}
+.center{text-align:center}
 
-/* khoảng nghỉ giữa hai chặng của trang: một dòng chữ căn giữa */
-.breather{padding-block:clamp(52px,6.5vw,84px);text-align:center}
-.breather .tick{display:block;width:1px;height:28px;margin:0 auto 28px;background:var(--accent)}
+/* khoảng nghỉ: dải cam ấm, chữ lớn */
+.breather{padding-block:clamp(64px,8vw,100px);text-align:center;background:var(--warm-soft);border-top-color:transparent}
+.breather .tick{display:block;width:2px;height:36px;margin:0 auto 28px;background:var(--warm)}
 .breather p{
-  font-family:var(--f-display);font-style:italic;font-weight:300;
-  font-size:clamp(1.3rem,1rem + 1.5vw,1.9rem);line-height:1.5;
+  font-family:var(--f-display);font-style:italic;font-weight:400;
+  font-size:clamp(1.6rem,1.1rem + 2.2vw,2.4rem);line-height:1.42;
   letter-spacing:-.012em;color:var(--ink);
-  max-width:31rem;margin-inline:auto;text-wrap:balance;
+  max-width:40rem;margin-inline:auto;text-wrap:balance;
 }
 
 /* ================= khung ảnh ================= */
-.figure{position:relative;padding:0 14px 14px 0}
+.figure{position:relative;padding:0 18px 18px 0}
 .figure .frame{
-  position:absolute;top:14px;left:14px;right:0;bottom:0;
-  background:var(--accent);opacity:.16;border-radius:2px;
+  position:absolute;top:18px;left:18px;right:0;bottom:0;
+  background:var(--accent);opacity:.28;border-radius:4px;
 }
-.figure img{position:relative;display:block;width:100%;border-radius:2px}
+.figure.warm .frame{background:var(--warm);opacity:.4}
+.figure img{position:relative;display:block;width:100%;height:auto;border-radius:4px}
 
 /* ================= header ================= */
 .site-head{
@@ -168,50 +216,65 @@ section:first-of-type{border-top:0}
 
 /* ================= hero ================= */
 .hero{
-  padding-block:0 clamp(44px,5vw,72px);
+  padding-block:0 clamp(52px,6vw,80px);
   border-top:0;
   background:
+    radial-gradient(60% 50% at 0% 100%,var(--warm-tint) 0%,transparent 70%),
     radial-gradient(120% 90% at 88% 0%,var(--accent-tint) 0%,transparent 62%),
     linear-gradient(to bottom,var(--wash) 0%,var(--paper) 78%);
 }
-.hero-grid{display:grid;grid-template-columns:1fr;gap:28px}
-.hero-lead{display:flex;flex-direction:column;gap:16px;min-width:0}
-.hero-rest{display:flex;flex-direction:column;gap:22px;min-width:0}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:30px}
+.hero-lead{display:flex;flex-direction:column;gap:18px;min-width:0}
+.hero-rest{display:flex;flex-direction:column;gap:26px;min-width:0}
 .hero h1{
   font-family:var(--f-display);
-  font-size:clamp(2.6rem,1.5rem + 5.2vw,4.4rem);
-  line-height:1.05;letter-spacing:-.032em;font-weight:500;
+  font-size:clamp(3.2rem,1.8rem + 6vw,5rem);
+  line-height:1.04;letter-spacing:-.032em;font-weight:500;
   margin:0;
 }
-.hero h1 .q{color:var(--accent)}
-/* ảnh hero để nguyên khung gốc 43:64 — không cắt, không kéo giãn */
-.hero .figure img{height:auto}
+.hero h1 .q{color:var(--warm)}
+
+/* "Dành cho" — khối cam nổi bật */
+.for-who{
+  background:var(--warm-strong);color:var(--warm-on);
+  border-radius:6px;padding:20px 24px 22px;
+  box-shadow:0 14px 30px -18px rgba(191,84,23,.7);
+  position:relative;
+}
+.for-who::before{
+  content:"";position:absolute;left:0;top:18px;bottom:18px;width:5px;
+  background:#ffd2b0;border-radius:0 3px 3px 0;
+}
+.for-label{
+  display:inline-block;margin-bottom:8px;
+  font-size:.82rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  background:rgba(255,255,255,.2);padding:3px 10px;border-radius:3px;
+}
+.for-who p{font-size:clamp(1.25rem,1.05rem + .8vw,1.5rem);line-height:1.45;font-weight:600;color:var(--warm-on)}
 
 .hero-claim{
   font-family:var(--f-display);font-weight:500;
-  font-size:clamp(1.15rem,.95rem + 1vw,1.45rem);line-height:1.4;
-  letter-spacing:-.01em;
+  font-size:clamp(1.6rem,1.2rem + 1.8vw,2.3rem);line-height:1.3;
+  letter-spacing:-.012em;
 }
 
-/* thước phương vị — mô-típ dẫn hướng của trang */
+/* thước phương vị */
 .scale{display:flex;align-items:center;gap:14px}
 .scale-end{
-  font-size:.68rem;font-weight:600;letter-spacing:.16em;
+  font-size:.8rem;font-weight:700;letter-spacing:.14em;
   color:var(--accent-text);white-space:nowrap;
 }
 .scale-track{
   position:relative;flex:1;height:26px;
   background-image:repeating-linear-gradient(to right,var(--rule) 0 1px,transparent 1px 11px);
-  background-size:100% 9px;
-  background-position:0 100%;
-  background-repeat:repeat-x;
+  background-size:100% 9px;background-position:0 100%;background-repeat:repeat-x;
   border-bottom:1px solid var(--rule);
 }
-.needle{position:absolute;bottom:0;left:47%;width:1px;height:26px;background:var(--accent)}
+.needle{position:absolute;bottom:0;left:47%;width:2px;height:26px;background:var(--warm)}
 .needle::before{
   content:"";position:absolute;top:0;left:50%;
-  width:7px;height:7px;margin-left:-3.5px;border-radius:50%;
-  background:var(--accent);
+  width:9px;height:9px;margin-left:-4.5px;border-radius:50%;
+  background:var(--warm);
 }
 @media (prefers-reduced-motion:no-preference){
   .needle{animation:settle 2.4s cubic-bezier(.2,.75,.25,1) 1 both}
@@ -223,15 +286,13 @@ section:first-of-type{border-top:0}
     100%{left:47%}
   }
 }
-.scale-caption{font-size:.8rem;color:var(--muted)}
 
-/* liên kết dẫn xuống nội dung, thay cho lời mời đăng ký ở ngay đầu trang */
 .jump{
   align-self:flex-start;
   display:inline-flex;align-items:center;gap:12px;
-  font-size:.86rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-  background:var(--band-accent);color:var(--band);   /* đúng turquoise của logo */
-  text-decoration:none;border-radius:2px;padding:14px 24px;
+  font-size:.95rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--band-accent);color:var(--band);
+  text-decoration:none;border-radius:4px;padding:16px 26px;
   transition:background .18s,color .18s;
 }
 .jump:hover{background:var(--accent);color:var(--accent-on)}
@@ -244,160 +305,233 @@ section[id]{scroll-margin-top:28px}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .btn{
   display:inline-flex;align-items:center;gap:10px;
-  font-family:var(--f-body);font-size:.92rem;font-weight:600;letter-spacing:.02em;
-  padding:14px 24px;border-radius:2px;text-decoration:none;
+  font-family:var(--f-body);font-size:1.02rem;font-weight:600;letter-spacing:.01em;
+  padding:16px 26px;border-radius:4px;text-decoration:none;
   border:1px solid transparent;transition:background .18s,color .18s,border-color .18s;
 }
 .btn-primary{background:var(--accent);color:var(--accent-on)}
 .btn-primary:hover{background:var(--ink);color:var(--paper)}
-.btn-ghost{border-color:var(--rule);color:var(--ink)}
-.btn-ghost:hover{border-color:var(--accent);background:var(--accent-tint)}
+.btn-warm{background:var(--warm-strong);color:var(--warm-on)}
+.btn-warm:hover{background:var(--ink);color:var(--paper)}
+.btn-ghost{border-color:var(--accent);color:var(--ink)}
+.btn-ghost:hover{background:var(--accent-tint)}
 .btn .arrow{transition:transform .18s}
 .btn:hover .arrow{transform:translateX(3px)}
-.cta-note{font-size:.85rem;color:var(--muted)}
+.cta-note{font-size:.98rem;color:var(--muted)}
 
 /* ================= danh sách ================= */
-.ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:18px}
-.ticks li{position:relative;padding-left:26px;color:var(--ink-soft)}
-.ticks li::before{content:"";position:absolute;left:0;top:.72em;width:13px;height:1px;background:var(--accent)}
-.plain{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px;color:var(--ink-soft)}
-.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
-.tags li{
-  font-size:.86rem;color:var(--muted);
-  border:1px solid var(--rule);border-radius:2px;
-  padding:5px 12px;background:var(--surface);
+.ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.ticks li{position:relative;padding-left:32px;color:var(--ink-soft)}
+.ticks li::before{
+  content:"";position:absolute;left:0;top:.5em;width:14px;height:14px;border-radius:50%;
+  background:var(--warm-tint);box-shadow:inset 0 0 0 4px var(--warm);
 }
-.tint .tags li{background:transparent}
+
+/* danh sách ngắn thành các thẻ có dấu tick */
+.facts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.facts li{
+  display:flex;gap:14px;align-items:center;
+  background:var(--surface);border-radius:6px;padding:14px 18px;
+  font-size:1.12rem;font-weight:500;color:var(--ink);
+  border-left:4px solid var(--accent);
+}
+.facts li::before{
+  content:"✓";flex:0 0 30px;width:30px;height:30px;border-radius:50%;
+  display:grid;place-items:center;font-size:.95rem;font-weight:700;
+  background:var(--accent-tint);color:var(--accent-text);
+}
+.facts.nope li{border-left-color:var(--warm)}
+.facts.nope li::before{content:"✕";background:var(--warm-tint);color:var(--warm-text)}
+.tint .facts li,.warmth .facts li{background:var(--surface)}
+
+.tags{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}
+.tags li{
+  font-size:1rem;font-weight:500;color:var(--accent-text);
+  border:1px solid transparent;border-radius:999px;
+  padding:7px 16px;background:var(--accent-tint);
+}
+.tags.warm li{background:var(--warm-tint);color:var(--warm-text)}
+
+/* ================= thẻ đánh số (Nhận diện) ================= */
+.cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:16px;counter-reset:c}
+.cards li{
+  counter-increment:c;position:relative;
+  background:var(--surface);border-radius:8px;
+  padding:22px 22px 24px 22px;color:var(--ink-soft);font-size:1.08rem;
+  border-top:4px solid var(--accent);
+  box-shadow:0 10px 26px -20px rgba(7,63,66,.55);
+}
+.cards li:nth-child(even){border-top-color:var(--warm)}
+.cards li::before{
+  content:counter(c,decimal-leading-zero);display:block;
+  font-family:var(--f-display);font-size:2.1rem;line-height:1;font-weight:500;
+  color:var(--warm);margin-bottom:10px;
+}
+.cards li:nth-child(even)::before{color:var(--accent)}
+
+.note{
+  background:var(--band);color:var(--band-ink);border-radius:8px;
+  padding:26px 28px;font-size:1.12rem;line-height:1.7;
+}
 
 /* ================= Từ → Đến ================= */
-.turn{display:flex;flex-direction:column;border-left:2px solid var(--accent)}
-.turn-row{display:grid;grid-template-columns:3.4rem 1fr;gap:0 14px;padding:14px 0 14px 18px}
-.turn-row + .turn-row{border-top:1px dashed var(--rule)}
+.turn{display:flex;flex-direction:column;background:var(--surface);border-radius:8px;overflow:hidden;box-shadow:0 10px 26px -20px rgba(7,63,66,.55)}
+.turn-row{display:grid;grid-template-columns:3.6rem 1fr;gap:0 14px;padding:18px 22px}
+.turn-row.to{background:var(--accent-tint)}
 .turn-key{
-  font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--muted);padding-top:.42em;
+  font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);padding-top:.5em;
 }
-.turn-val{font-family:var(--f-display);font-size:1.08rem;line-height:1.5;color:var(--muted)}
+.turn-val{font-family:var(--f-display);font-size:1.25rem;line-height:1.45;color:var(--muted)}
 .turn-row.to .turn-key{color:var(--accent-text)}
 .turn-row.to .turn-val{color:var(--ink);font-weight:500}
 
-.session{display:flex;flex-direction:column;gap:20px}
-.session-no{
-  font-family:var(--f-display);font-size:.8rem;font-weight:600;
-  letter-spacing:.18em;text-transform:uppercase;color:var(--accent-text);
+.session{
+  display:flex;flex-direction:column;gap:20px;
+  background:var(--surface-2);border-radius:10px;padding:0 0 28px;overflow:hidden;
 }
-.sessions{display:flex;flex-direction:column;gap:clamp(36px,5vw,56px)}
+.session > *:not(.session-no){margin-inline:24px}
+.session .turn{box-shadow:none}
+.session-no{
+  display:flex;align-items:center;gap:14px;
+  font-family:var(--f-display);font-size:1.3rem;font-weight:500;line-height:1.3;
+  background:var(--band);color:var(--band-ink);padding:18px 24px;
+}
+.session-no .num{
+  flex:0 0 auto;font-family:var(--f-body);font-size:.8rem;font-weight:700;letter-spacing:.12em;
+  background:var(--warm-strong);color:var(--warm-on);border-radius:3px;padding:4px 10px;text-transform:uppercase;
+}
+.sessions{display:grid;grid-template-columns:1fr;gap:24px;align-items:start}
 
 /* ================= la bàn ================= */
-.method-head{display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap}
-.rose{flex:0 0 76px;width:76px;height:76px;color:var(--muted);max-width:100%}
-.rose .n{stroke:var(--accent)}
-.method-title{flex:1 1 16rem}
+.rose{width:120px;height:120px;color:var(--band-muted);flex:0 0 auto}
+.rose .n{stroke:var(--warm)}
 @media (prefers-reduced-motion:no-preference){
   .rose .needle-g{transform-origin:50% 50%;animation:swing 3s cubic-bezier(.2,.8,.3,1) 1 both}
   @keyframes swing{0%{transform:rotate(38deg)}60%{transform:rotate(-14deg)}100%{transform:rotate(-6deg)}}
 }
+.method{display:grid;grid-template-columns:1fr;gap:32px}
+.method-aside{display:flex;flex-direction:column;gap:24px}
+.band .h2{color:var(--band-ink)}
+.band p{color:var(--band-muted)}
+.band em{color:var(--band-ink)}
+.band .pull{color:var(--band-ink);border-left-color:var(--warm)}
 
 /* ================= ảnh một bên, chữ một bên ================= */
-/* Mã nguồn luôn xếp chữ trước, ảnh sau — điện thoại đọc chữ trước.
-   Trên laptop, .img-left dùng order để đẩy ảnh sang cột trái. */
-.split{display:grid;grid-template-columns:1fr;gap:clamp(28px,4vw,44px);align-items:center}
+.split{display:grid;grid-template-columns:1fr;gap:clamp(32px,4vw,56px);align-items:center}
 .split-figure{min-width:0}
-.split .figure img{height:auto}   /* mọi ảnh giữ nguyên khung gốc, không cắt */
+.split > .col{min-width:0}
+
+/* thẻ trích dẫn nền thẫm */
+.quote-card{
+  background:var(--band);color:var(--band-ink);border-radius:10px;
+  padding:32px 30px;display:flex;flex-direction:column;gap:20px;
+}
+.quote-card .pull{color:var(--band-ink);border-left-color:var(--warm)}
+.quote-card p{color:var(--band-muted)}
 
 /* ================= vé ================= */
-.tickets{display:grid;grid-template-columns:1fr;gap:18px;align-items:stretch}
+.tickets{display:grid;grid-template-columns:1fr;gap:22px;align-items:stretch}
 .ticket{
-  display:flex;flex-direction:column;gap:18px;
+  display:flex;flex-direction:column;gap:20px;
   border:1px solid var(--rule);background:var(--surface);
-  padding:26px 24px 24px;border-radius:2px;
+  padding:30px 26px 28px;border-radius:10px;
 }
-.ticket.vip{border-color:var(--accent);background:var(--wash)}
-.ticket-name{font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-.ticket.vip .ticket-name{color:var(--accent-text)}
+.ticket.vip{border:2px solid var(--warm);background:var(--surface);box-shadow:0 22px 40px -28px rgba(191,84,23,.6)}
+.ticket-name{font-size:.88rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.ticket.vip .ticket-name{color:var(--warm-text)}
 .ticket-price{
-  font-family:var(--f-display);font-size:2.5rem;line-height:1.1;font-weight:500;
+  font-family:var(--f-display);font-size:3rem;line-height:1.1;font-weight:500;
   letter-spacing:-.03em;font-variant-numeric:tabular-nums;
 }
-.ticket-price .cur{font-size:1.1rem;letter-spacing:0;vertical-align:.55em;color:var(--muted);margin-left:2px}
-.ticket-for{font-size:.93rem;color:var(--ink-soft)}
-.perks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px;font-size:.93rem}
-.perks li{display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:start;color:var(--ink-soft)}
-.perks .yes{color:var(--accent-text);font-weight:600;line-height:1.5}
-.perks .no{color:var(--muted);line-height:1.5}
+.ticket-price .cur{font-size:1.2rem;letter-spacing:0;vertical-align:.6em;color:var(--muted);margin-left:2px}
+.ticket-for{
+  font-size:1.08rem;color:var(--ink);font-weight:500;
+  background:var(--accent-tint);border-left:4px solid var(--accent);
+  padding:12px 16px;border-radius:0 6px 6px 0;
+}
+.ticket.vip .ticket-for{background:var(--warm-soft);border-left-color:var(--warm)}
+.perks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;font-size:1.05rem}
+.perks li{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;color:var(--ink-soft)}
+.perks .yes{color:var(--accent-text);font-weight:700;line-height:1.6}
+.perks .no{color:var(--muted);line-height:1.6}
 .perks li.off{color:var(--muted)}
 .perks li.off span:last-child{text-decoration:line-through;text-decoration-color:var(--rule)}
-.ticket .btn{justify-content:center;margin-top:auto}
+.ticket .btn{justify-content:center;margin-top:auto;text-align:center}
 
 /* ================= câu hỏi thường gặp ================= */
-.faq{display:flex;flex-direction:column;border-top:1px solid var(--rule-soft)}
-.faq details{border-bottom:1px solid var(--rule-soft)}
+.faq-grid{display:grid;grid-template-columns:1fr;gap:32px}
+.faq{display:flex;flex-direction:column;gap:12px}
+.faq details{background:var(--surface);border-radius:8px;border-left:4px solid var(--accent)}
+.faq details[open]{border-left-color:var(--warm)}
 .faq summary{
-  cursor:pointer;list-style:none;padding:20px 34px 20px 0;position:relative;
-  font-family:var(--f-display);font-size:1.08rem;line-height:1.5;color:var(--ink);
+  cursor:pointer;list-style:none;padding:20px 52px 20px 22px;position:relative;
+  font-family:var(--f-display);font-size:1.25rem;line-height:1.45;color:var(--ink);font-weight:500;
 }
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{
-  content:"";position:absolute;right:6px;top:1.9em;
-  width:10px;height:10px;
-  border-right:1px solid var(--accent);border-bottom:1px solid var(--accent);
+  content:"";position:absolute;right:24px;top:1.85em;
+  width:11px;height:11px;
+  border-right:2px solid var(--warm);border-bottom:2px solid var(--warm);
   transform:translateY(-50%) rotate(45deg);transition:transform .2s;
 }
 .faq details[open] summary::after{transform:translateY(-50%) rotate(-135deg)}
-.faq .answer{display:flex;flex-direction:column;gap:12px;padding:0 0 22px;color:var(--ink-soft);font-size:.97rem}
+.faq .answer{display:flex;flex-direction:column;gap:12px;padding:0 22px 22px;color:var(--ink-soft);font-size:1.06rem}
 
 /* ================= khối chốt ================= */
 .closing{background:var(--band);color:var(--band-ink);border-top-color:transparent}
-.closing .eyebrow{color:var(--band-accent)}
 .closing .h2{color:var(--band-ink)}
 .closing p{color:var(--band-muted)}
 .closing .q{
-  font-family:var(--f-display);font-style:italic;font-weight:300;
-  font-size:clamp(1.35rem,1rem + 1.7vw,1.95rem);line-height:1.44;letter-spacing:-.012em;
-  color:var(--band-ink);
+  font-family:var(--f-display);font-style:italic;font-weight:400;
+  font-size:clamp(1.55rem,1.1rem + 2vw,2.2rem);line-height:1.4;letter-spacing:-.012em;
+  color:var(--band-ink);border-left:4px solid var(--warm);padding-left:22px;
 }
-.closing .btn-primary{background:var(--band-accent);color:var(--band)}
-.closing .btn-primary:hover{background:var(--band-ink);color:var(--band)}
 .closing .cta-note{color:var(--band-muted)}
-.tally{display:flex;flex-wrap:wrap;gap:10px 28px;list-style:none;margin:0;padding:0}
-.tally li{display:flex;align-items:baseline;gap:9px;font-size:.95rem;color:var(--band-muted)}
+.tally{display:flex;flex-wrap:wrap;gap:12px;list-style:none;margin:0;padding:0}
+.tally li{
+  display:flex;align-items:baseline;gap:10px;font-size:1.05rem;color:var(--band-ink);
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+  border-radius:8px;padding:10px 18px;
+}
 .tally .n{
-  font-family:var(--f-display);font-size:1.5rem;font-weight:500;
-  color:var(--band-accent);font-variant-numeric:tabular-nums;
+  font-family:var(--f-display);font-size:2rem;font-weight:500;line-height:1;
+  color:var(--warm);font-variant-numeric:tabular-nums;
 }
 
 footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
 .foot{
   display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;
-  justify-content:space-between;font-size:.82rem;color:var(--muted);
+  justify-content:space-between;font-size:.95rem;color:var(--muted);
 }
 .foot-brand{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .foot-brand .logo{height:44px}
 
 .tm{font-size:.62em;vertical-align:.5em;letter-spacing:0}
-.fill{color:var(--muted);border-bottom:1px dotted var(--muted)}
-.closing .fill{color:var(--band-muted);border-bottom-color:var(--band-muted)}
 
-/* ================= dải chữ chạy giữa các phần ================= */
-/* JS nhân bản nhóm chữ để vòng chạy liền mạch; không có JS thì dải đứng yên */
+/* ================= dải chữ chạy ================= */
 .ticker{
   background:var(--band);color:var(--band-ink);
-  overflow:hidden;padding-block:clamp(14px,1.8vw,20px);
+  overflow:hidden;padding-block:clamp(16px,2vw,22px);
 }
+.ticker.warm{background:var(--warm-strong)}
 .ticker + section{border-top-color:transparent}
 .ticker-track{display:flex;width:max-content}
 .ticker-group{display:flex;align-items:center;flex-shrink:0}
 .ticker-item{
   font-family:var(--f-display);font-weight:400;white-space:nowrap;
-  font-size:clamp(1.12rem,.9rem + 1vw,1.6rem);line-height:1.3;letter-spacing:-.01em;
+  font-size:clamp(1.3rem,1rem + 1.2vw,1.75rem);line-height:1.3;letter-spacing:-.01em;
   padding-inline:clamp(16px,2.2vw,30px);
 }
 .ticker-item.em{font-style:italic;color:var(--band-accent)}
+.ticker.warm .ticker-item.em{color:#fff}
 .ticker-item.cap{
-  font-family:var(--f-body);font-size:clamp(.7rem,.62rem + .3vw,.82rem);
-  font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--band-muted);
+  font-family:var(--f-body);font-size:clamp(.82rem,.72rem + .3vw,.92rem);
+  font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--band-muted);
 }
-.ticker-sep{color:var(--band-accent);font-size:.72rem;line-height:1;opacity:.85}
+.ticker.warm .ticker-item.cap{color:#ffe1cc}
+.ticker-sep{color:var(--warm);font-size:.8rem;line-height:1}
+.ticker.warm .ticker-sep{color:#ffd2b0}
 @media (prefers-reduced-motion:no-preference){
   .ticker.is-running .ticker-track{animation:ticker-run var(--ticker-dur,46s) linear infinite}
   .ticker.reverse .ticker-track{animation-direction:reverse}
@@ -405,38 +539,68 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
   @keyframes ticker-run{to{transform:translateX(-50%)}}
 }
 
+/* ================= máy tính bảng trở lên ================= */
+@media (min-width:700px){
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .facts.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .facts.three li{flex-direction:column;align-items:flex-start;border-left:0;border-top:4px solid var(--warm)}
+}
+
 /* ================= laptop ================= */
 @media (min-width:900px){
-  /* hero hai cột: ảnh chiếm trọn chiều cao bên phải, chữ chia hai hàng bên trái */
   .hero-grid{
-    grid-template-columns:minmax(0,1.32fr) minmax(0,.68fr);
+    grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);
     grid-template-areas:"lead figure" "rest figure";
-    column-gap:clamp(34px,4vw,58px);
-    row-gap:26px;
+    column-gap:clamp(34px,4vw,64px);
+    row-gap:28px;
     align-items:start;
   }
   .hero-lead{grid-area:lead}
   .hero-rest{grid-area:rest}
   .hero-figure{grid-area:figure;align-self:start}
 
-  .split{grid-template-columns:repeat(2,minmax(0,1fr))}   /* mặc định: ảnh bên phải */
-  .split.img-left .split-figure{order:-1}                 /* đẩy ảnh sang trái */
+  .split{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .split.img-left .split-figure{order:-1}
+  .split.top{align-items:start}
+  .split.text-wide{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}
   .tickets{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sessions{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .method{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;align-items:start}
+  .method-aside{position:sticky;top:40px}
+  .faq-grid{grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:56px;align-items:start}
+  .faq-grid .head{position:sticky;top:40px}
+  .quote-card{position:sticky;top:40px}
 }
 
 /* ================= điện thoại ================= */
 @media (max-width:640px){
-  body{font-size:16px}
-  section{padding-block:46px}
-  .logo{height:46px}
-  .foot-brand .logo{height:38px}
-  .scale-end{font-size:.62rem;letter-spacing:.12em}
-  .turn-row{grid-template-columns:1fr;gap:2px}
+  /* nâng cả thang rem: mọi cỡ chữ theo rem đều to lên trên điện thoại */
+  html{font-size:18px}
+  body{font-size:1.06rem;line-height:1.7}
+  .wrap{padding-inline:18px}
+  section{padding-block:56px}
+  .logo{height:48px}
+  .foot-brand .logo{height:40px}
+  .h2{font-size:1.75rem}
+  .hero h1{font-size:3.1rem}
+  .scale-end{font-size:.74rem;letter-spacing:.1em}
+  .turn-row{grid-template-columns:1fr;gap:2px;padding:16px 18px}
   .turn-row .turn-key{padding-top:0}
-  .ticket{padding:22px 20px}
+  .ticket{padding:26px 20px}
+  .for-who{padding:18px 20px 20px}
+  .pull{padding-left:18px}
+  .note{padding:22px 20px}
+  .quote-card{padding:26px 22px}
+  .session > *:not(.session-no){margin-inline:18px}
+  .session-no{padding:16px 18px;flex-wrap:wrap;gap:10px}
+  .faq summary{padding:18px 46px 18px 18px;font-size:1.2rem}
+  .faq .answer{padding:0 18px 20px}
+  .deco::after{opacity:.08}
 }
 </style>
-
+</head>
+<body>
 <main>
 
 <!-- ========== HERO ========== -->
@@ -457,15 +621,17 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
         <div class="scale-track"><span class="needle"></span></div>
         <span class="scale-end">RỜI ĐI</span>
       </div>
-      <p class="scale-caption">Dành cho người đã đi làm nhiều năm nhưng vẫn luôn cảm thấy mông lung về hướng đi sự nghiệp.</p>
+      <div class="for-who">
+        <span class="for-label">Dành cho</span>
+        <p>người đã đi làm nhiều năm nhưng vẫn luôn cảm thấy mông lung về hướng đi sự nghiệp.</p>
+      </div>
       <p class="pull">Ở lại thì không muốn.<br>Bước đi thì chưa dám.</p>
       <a class="jump" href="#hanh-trinh">Xem hành trình 2 buổi <span class="down" aria-hidden="true">↓</span></a>
     </div>
 
-    <!-- ảnh đặt cuối trong mã nguồn: điện thoại đọc chữ trước, ảnh theo sau.
-         Trên laptop grid-template-areas đưa ảnh về đúng cột phải. -->
+    <!-- ảnh đặt cuối trong mã nguồn: điện thoại đọc chữ trước, ảnh theo sau -->
     <div class="hero-figure">
-      <div class="figure">
+      <div class="figure warm">
         <span class="frame" aria-hidden="true"></span>
         <img src="img/host-desk.jpg" width="1100" height="1637" alt="Người hướng dẫn workshop ngồi bên bàn làm việc với laptop và sổ tay">
       </div>
@@ -486,39 +652,50 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
 </div>
 
 <!-- ========== LỜI HỨA ========== -->
-<section>
-  <div class="wrap col measure">
+<section class="deco">
+  <div class="wrap split top xwide">
     <p class="hero-claim">Thoát khỏi sự hoang mang về hướng đi sự nghiệp. Biết rõ nên bước tiếp thế nào.</p>
-    <p class="lede">Khám phá phương pháp giúp bạn làm rõ lựa chọn phù hợp với chính mình — hài hòa giữa điều mình mong muốn và những trách nhiệm, ràng buộc đang có — để có thể dấn thân với sự sáng rõ và vững vàng hơn.</p>
-    <p class="lede">Bạn không cần quyết định nghỉ việc hôm nay. Bạn cần một điểm tựa đủ rõ để biết mình cần nhìn vào đâu trước khi quyết định.</p>
+    <div class="col">
+      <p class="lede">Khám phá phương pháp giúp bạn làm rõ lựa chọn phù hợp với chính mình — hài hòa giữa điều mình mong muốn và những trách nhiệm, ràng buộc đang có — để có thể dấn thân với sự sáng rõ và vững vàng hơn.</p>
+      <p class="pull">Bạn không cần quyết định nghỉ việc hôm nay. Bạn cần một điểm tựa đủ rõ để biết mình cần nhìn vào đâu trước khi quyết định.</p>
+    </div>
   </div>
 </section>
 
 <!-- ========== TÌNH TRẠNG ========== -->
-<section>
-  <div class="wrap col measure">
-    <div class="head">
-      <h2 class="h2">Có thể sự nghiệp hiện tại của bạn không hề tệ.</h2>
+<section class="tint">
+  <div class="wrap split xwide">
+    <div class="col">
+      <div class="head">
+        <h2 class="h2">Có thể sự nghiệp hiện tại của bạn không hề tệ.</h2>
+      </div>
+      <ul class="facts">
+        <li>Thu nhập vẫn tốt.</li>
+        <li>Vị trí vẫn ổn.</li>
+        <li>Bạn đã mất nhiều năm để gây dựng nó.</li>
+      </ul>
+      <p>Gia đình, con cái, khoản vay, bảo hiểm và những trách nhiệm đang có… khiến việc “cứ thế mà nghỉ” chưa bao giờ là một lựa chọn đơn giản.</p>
+      <p>Nhìn từ bên ngoài, có lẽ bạn vẫn đang có một sự nghiệp đáng mơ ước. Nhưng bên trong, một câu hỏi ngày càng khó phớt lờ:</p>
+      <p class="pull">“Mình có thực sự muốn sống như thế này thêm 5, 10 hay 20 năm nữa không?”</p>
+      <p>Và rồi bạn rơi vào một trạng thái rất khó chịu: ở lại thì mòn mỏi, bước đi thì bất an.</p>
     </div>
-    <ul class="plain">
-      <li>Thu nhập vẫn tốt.</li>
-      <li>Vị trí vẫn ổn.</li>
-      <li>Bạn đã mất nhiều năm để gây dựng nó.</li>
-    </ul>
-    <p>Gia đình, con cái, khoản vay, bảo hiểm và những trách nhiệm đang có… khiến việc “cứ thế mà nghỉ” chưa bao giờ là một lựa chọn đơn giản.</p>
-    <p>Nhìn từ bên ngoài, có lẽ bạn vẫn đang có một sự nghiệp đáng mơ ước. Nhưng bên trong, một câu hỏi ngày càng khó phớt lờ:</p>
-    <p class="pull">“Mình có thực sự muốn sống như thế này thêm 5, 10 hay 20 năm nữa không?”</p>
-    <p>Và rồi bạn rơi vào một trạng thái rất khó chịu: ở lại thì mòn mỏi, bước đi thì bất an.</p>
+
+    <div class="split-figure">
+      <div class="figure warm">
+        <span class="frame" aria-hidden="true"></span>
+        <img src="img/host-lean.jpg" width="1600" height="1212" loading="lazy" alt="Người hướng dẫn workshop mỉm cười bên hàng cây xanh">
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ========== NHẬN DIỆN ========== -->
-<section>
-  <div class="wrap col measure">
-    <div class="head">
+<section class="deco deco-left">
+  <div class="wrap col xwide">
+    <div class="head center">
       <h2 class="h2">Có thể bạn đang ở một trong những điểm này</h2>
     </div>
-    <ul class="ticks">
+    <ul class="cards">
       <li>Bạn biết mình không muốn tiếp tục như cũ, nhưng lại chưa rõ mình thực sự muốn điều gì.</li>
       <li>Bạn biết mình muốn thay đổi, nhưng khi nghĩ đến gia đình, thu nhập và những gì đã gây dựng, đôi chân lại chùn bước.</li>
       <li>Bạn không chắc mình thật sự không hợp với công việc, hay chỉ đang quá mệt với cách mình đang sống.</li>
@@ -526,34 +703,34 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
       <li>Bạn sợ một lựa chọn sai có thể khiến mình mất đi những gì đã mất nhiều năm mới xây được.</li>
       <li>Nhưng đồng thời, bạn cũng sợ một ngày nhìn lại và nhận ra mình đã ở lại quá lâu chỉ vì sợ.</li>
     </ul>
-    <p>Điều khiến bạn mắc kẹt không phải vì bạn thiếu năng lực. Có thể chỉ là bạn đang phải đưa ra một quyết định rất lớn trong khi chưa có một cách đủ rõ để biết điều gì thực sự quan trọng với mình ở giai đoạn này của cuộc đời.</p>
+    <p class="note">Điều khiến bạn mắc kẹt không phải vì bạn thiếu năng lực. Có thể chỉ là bạn đang phải đưa ra một quyết định rất lớn trong khi chưa có một cách đủ rõ để biết điều gì thực sự quan trọng với mình ở giai đoạn này của cuộc đời.</p>
   </div>
 </section>
 
 <!-- ========== NHỮNG CÁCH ĐÃ THỬ ========== -->
-<section>
+<section class="tint">
   <div class="wrap split img-left xwide">
     <div class="col">
-    <div class="head">
-      <h2 class="h2">Bạn có thể đã thử rất nhiều cách.</h2>
-    </div>
-    <ul class="tags">
-      <li>Đổi công ty</li>
-      <li>Đổi vị trí</li>
-      <li>Tìm việc lương cao hơn</li>
-      <li>Tìm việc nhẹ nhàng hơn</li>
-      <li>MBTI</li>
-      <li>DISC</li>
-      <li>SWOT</li>
-      <li>Đọc sách</li>
-      <li>Nói chuyện với mentor</li>
-      <li>Viết ưu – nhược điểm</li>
-      <li>Lướt LinkedIn</li>
-      <li>Xin nghỉ phép, đi du lịch để “reset”</li>
-    </ul>
-    <p>Những cách đó không nhất thiết là sai. Chúng có thể cho bạn thêm thông tin, thêm góc nhìn, thêm lựa chọn. Nhưng có một khác biệt quan trọng:</p>
-    <p class="pull">Có thêm thông tin không đồng nghĩa với việc bạn biết phải quyết định thế nào.</p>
-    <p>Bạn có thể có 10 lựa chọn. 20 lời khuyên. Hàng trăm bài viết. Nhưng cuối cùng vẫn quay lại câu hỏi: <em>“Vậy với chính tôi, ở thời điểm này, lựa chọn nào mới thực sự đáng để đánh đổi?”</em></p>
+      <div class="head">
+        <h2 class="h2">Bạn có thể đã thử rất nhiều cách.</h2>
+      </div>
+      <ul class="tags">
+        <li>Đổi công ty</li>
+        <li>Đổi vị trí</li>
+        <li>Tìm việc lương cao hơn</li>
+        <li>Tìm việc nhẹ nhàng hơn</li>
+        <li>MBTI</li>
+        <li>DISC</li>
+        <li>SWOT</li>
+        <li>Đọc sách</li>
+        <li>Nói chuyện với mentor</li>
+        <li>Viết ưu – nhược điểm</li>
+        <li>Lướt LinkedIn</li>
+        <li>Xin nghỉ phép, đi du lịch để “reset”</li>
+      </ul>
+      <p>Những cách đó không nhất thiết là sai. Chúng có thể cho bạn thêm thông tin, thêm góc nhìn, thêm lựa chọn. Nhưng có một khác biệt quan trọng:</p>
+      <p class="pull">Có thêm thông tin không đồng nghĩa với việc bạn biết phải quyết định thế nào.</p>
+      <p>Bạn có thể có 10 lựa chọn. 20 lời khuyên. Hàng trăm bài viết. Nhưng cuối cùng vẫn quay lại câu hỏi: <em>“Vậy với chính tôi, ở thời điểm này, lựa chọn nào mới thực sự đáng để đánh đổi?”</em></p>
     </div>
 
     <div class="split-figure">
@@ -565,7 +742,6 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
   </div>
 </section>
 
-<!-- ========== TÁI ĐỊNH KHUNG ========== -->
 <!-- ========== KHOẢNG NGHỈ ========== -->
 <section class="breather">
   <div class="wrap">
@@ -574,57 +750,64 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
   </div>
 </section>
 
-<section class="tint photo-bg">
-  <div class="wrap col measure">
-    <div class="head">
-      <h2 class="h2">Có thể vấn đề không phải là bạn thiếu một lựa chọn.</h2>
+<!-- ========== TÁI ĐỊNH KHUNG ========== -->
+<section class="photo-bg">
+  <div class="wrap split top text-wide xwide">
+    <div class="col">
+      <div class="head">
+        <h2 class="h2">Có thể vấn đề không phải là bạn thiếu một lựa chọn.</h2>
+      </div>
+      <p class="lede">Mà là bạn chưa có một cách đủ rõ để đánh giá những lựa chọn đang có.</p>
+      <p>Khi chưa biết điều gì thực sự quan trọng với mình, rất dễ đánh giá một công việc bằng những tiêu chuẩn có sẵn:</p>
+      <ul class="tags warm">
+        <li>Lương cao hơn</li>
+        <li>Chức danh tốt hơn</li>
+        <li>Công ty nổi tiếng hơn</li>
+        <li>Ít áp lực hơn</li>
+        <li>Nhiều cơ hội hơn</li>
+      </ul>
+      <p>Nhưng một lựa chọn có thể rất tốt trên giấy tờ — và vẫn không phải là lựa chọn tốt cho cuộc đời bạn.</p>
+      <p>Bởi vì đến một giai đoạn nào đó, câu hỏi không còn đơn giản là “Job nào tốt hơn?”, mà có thể là:</p>
     </div>
-    <p>Mà là bạn chưa có một cách đủ rõ để đánh giá những lựa chọn đang có.</p>
-    <p>Khi chưa biết điều gì thực sự quan trọng với mình, rất dễ đánh giá một công việc bằng những tiêu chuẩn có sẵn:</p>
-    <ul class="tags">
-      <li>Lương cao hơn</li>
-      <li>Chức danh tốt hơn</li>
-      <li>Công ty nổi tiếng hơn</li>
-      <li>Ít áp lực hơn</li>
-      <li>Nhiều cơ hội hơn</li>
-    </ul>
-    <p>Nhưng một lựa chọn có thể rất tốt trên giấy tờ — và vẫn không phải là lựa chọn tốt cho cuộc đời bạn.</p>
-    <p>Bởi vì đến một giai đoạn nào đó, câu hỏi không còn đơn giản là “Job nào tốt hơn?”, mà có thể là:</p>
-    <p class="pull">“Tôi thực sự muốn xây dựng cuộc sống nào trong giai đoạn này — và lựa chọn sự nghiệp nào phù hợp với con người, hoàn cảnh và những điều tôi không muốn đánh đổi?”</p>
-    <p>Đôi khi, điều khiến một quyết định trở nên bế tắc không phải vì bạn thiếu câu trả lời. Mà vì bạn đang cố trả lời một câu hỏi chưa đúng.</p>
+    <div class="quote-card">
+      <p class="pull">“Tôi thực sự muốn xây dựng cuộc sống nào trong giai đoạn này — và lựa chọn sự nghiệp nào phù hợp với con người, hoàn cảnh và những điều tôi không muốn đánh đổi?”</p>
+      <p>Đôi khi, điều khiến một quyết định trở nên bế tắc không phải vì bạn thiếu câu trả lời. Mà vì bạn đang cố trả lời một câu hỏi chưa đúng.</p>
+    </div>
   </div>
 </section>
 
 <!-- ========== PHƯƠNG PHÁP ========== -->
-<section>
-  <div class="wrap col measure">
-    <div class="method-head">
+<section class="band deco">
+  <div class="wrap method xwide">
+    <div class="method-aside">
       <svg class="rose" viewBox="0 0 76 76" role="img" aria-label="Biểu tượng la bàn">
-        <circle cx="38" cy="38" r="33" fill="none" stroke="currentColor" stroke-width="1" opacity=".45"/>
-        <circle cx="38" cy="38" r="25" fill="none" stroke="currentColor" stroke-width="1" opacity=".22"/>
-        <path d="M38 5v7M38 64v7M5 38h7M64 38h7" stroke="currentColor" stroke-width="1" opacity=".5" fill="none"/>
-        <path d="M14.5 14.5l4.5 4.5M57 57l4.5 4.5M61.5 14.5L57 19M19 57l-4.5 4.5" stroke="currentColor" stroke-width="1" opacity=".25" fill="none"/>
+        <circle cx="38" cy="38" r="33" fill="none" stroke="currentColor" stroke-width="1" opacity=".6"/>
+        <circle cx="38" cy="38" r="25" fill="none" stroke="currentColor" stroke-width="1" opacity=".3"/>
+        <path d="M38 5v7M38 64v7M5 38h7M64 38h7" stroke="currentColor" stroke-width="1" opacity=".6" fill="none"/>
+        <path d="M14.5 14.5l4.5 4.5M57 57l4.5 4.5M61.5 14.5L57 19M19 57l-4.5 4.5" stroke="currentColor" stroke-width="1" opacity=".35" fill="none"/>
         <g class="needle-g">
-          <path class="n" d="M38 14l5 22-5 6-5-6z" fill="none" stroke-width="1.4" stroke-linejoin="round"/>
-          <path d="M38 62l-5-22 5-6 5 6z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" opacity=".5"/>
+          <path class="n" d="M38 14l5 22-5 6-5-6z" fill="none" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M38 62l-5-22 5-6 5 6z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" opacity=".6"/>
         </g>
         <circle cx="38" cy="38" r="2" fill="currentColor"/>
       </svg>
-      <div class="col-tight method-title">
+      <div class="head">
         <h2 class="h2">Cách tiếp cận khác của La Bàn Bản Thể<span class="tm">™</span></h2>
       </div>
     </div>
 
-    <p>La Bàn Bản Thể™ không bắt đầu bằng <em>“Bạn hợp nghề gì?”</em>. Cũng không bắt đầu bằng <em>“Bạn nên nghỉ việc hay không?”</em>. Và càng không cố đưa cho bạn một đáp án nghề nghiệp có sẵn.</p>
-    <p>Thay vào đó, bạn sẽ được dẫn qua một hành trình để nhìn lại chính bài toán mà mình đang cố giải.</p>
-    <p>Bởi một quyết định sự nghiệp không chỉ là chuyện chọn một công việc. Nó chạm vào rất nhiều thứ đang diễn ra trong cuộc sống của bạn. Và đó cũng là lý do tại sao một câu trả lời có vẻ rất hợp lý trên giấy tờ đôi khi vẫn khiến bạn không thể thật sự yên tâm với nó.</p>
-    <p>La Bàn Bản Thể™ bắt đầu từ chính chỗ đó. Không vội đưa bạn đến một đáp án, mà giúp bạn nhìn rõ điều gì đang thực sự cần được nhìn rõ trước khi quyết định.</p>
-    <p class="pull">Mục tiêu không phải tìm ra một lựa chọn “tốt nhất” trên lý thuyết. Mà là đủ rõ ràng để nhận ra: lựa chọn nào đáng để mình dấn thân — trong chính cuộc đời mình.</p>
+    <div class="col">
+      <p>La Bàn Bản Thể™ không bắt đầu bằng <em>“Bạn hợp nghề gì?”</em>. Cũng không bắt đầu bằng <em>“Bạn nên nghỉ việc hay không?”</em>. Và càng không cố đưa cho bạn một đáp án nghề nghiệp có sẵn.</p>
+      <p>Thay vào đó, bạn sẽ được dẫn qua một hành trình để nhìn lại chính bài toán mà mình đang cố giải.</p>
+      <p>Bởi một quyết định sự nghiệp không chỉ là chuyện chọn một công việc. Nó chạm vào rất nhiều thứ đang diễn ra trong cuộc sống của bạn. Và đó cũng là lý do tại sao một câu trả lời có vẻ rất hợp lý trên giấy tờ đôi khi vẫn khiến bạn không thể thật sự yên tâm với nó.</p>
+      <p>La Bàn Bản Thể™ bắt đầu từ chính chỗ đó. Không vội đưa bạn đến một đáp án, mà giúp bạn nhìn rõ điều gì đang thực sự cần được nhìn rõ trước khi quyết định.</p>
+      <p class="pull">Mục tiêu không phải tìm ra một lựa chọn “tốt nhất” trên lý thuyết. Mà là đủ rõ ràng để nhận ra: lựa chọn nào đáng để mình dấn thân — trong chính cuộc đời mình.</p>
+    </div>
   </div>
 </section>
 
 <!-- ========== DẢI CHỮ CHẠY ========== -->
-<div class="ticker reverse" aria-hidden="true">
+<div class="ticker warm reverse" aria-hidden="true">
   <div class="ticker-track">
     <div class="ticker-group">
       <span class="ticker-item em">Ở lại hay rời đi?</span><span class="ticker-sep">✦</span>
@@ -637,14 +820,14 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
 
 <!-- ========== HÀNH TRÌNH ========== -->
 <section id="hanh-trinh">
-  <div class="wrap col measure">
-    <div class="head">
+  <div class="wrap col xwide">
+    <div class="head center">
       <h2 class="h2">Bạn sẽ đi qua điều gì trong 2 buổi?</h2>
     </div>
 
     <div class="sessions">
       <article class="session">
-        <p class="session-no">Buổi 1 — Nhìn rõ điểm nghẽn</p>
+        <p class="session-no"><span class="num">Buổi 1</span> Nhìn rõ điểm nghẽn</p>
         <div class="turn">
           <div class="turn-row from">
             <span class="turn-key">Từ</span>
@@ -667,7 +850,7 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
       </article>
 
       <article class="session">
-        <p class="session-no">Buổi 2 — Xây điểm tựa để ra quyết định</p>
+        <p class="session-no"><span class="num">Buổi 2</span> Xây điểm tựa để ra quyết định</p>
         <div class="turn">
           <div class="turn-row from">
             <span class="turn-key">Từ</span>
@@ -686,40 +869,46 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
 </section>
 
 <!-- ========== KẾT QUẢ ========== -->
-<section class="tint">
-  <div class="wrap col measure">
-    <div class="head">
-      <h2 class="h2">Sau 2 buổi, bạn có thể chưa có một “đáp án cuối cùng”.</h2>
-    </div>
-    <p>Và điều đó hoàn toàn ổn. Một quyết định lớn không nhất thiết phải được chốt trong hai buổi. Điều chúng ta muốn thay đổi là <em>cách bạn đứng trước quyết định đó</em>.</p>
-    <div class="turn">
-      <div class="turn-row from">
-        <span class="turn-key">Từ</span>
-        <span class="turn-val">“Tôi không biết phải làm gì.”</span>
+<section class="warmth">
+  <div class="wrap split xwide">
+    <div class="col">
+      <div class="head">
+        <h2 class="h2">Sau 2 buổi, bạn có thể chưa có một “đáp án cuối cùng”.</h2>
       </div>
-      <div class="turn-row to">
-        <span class="turn-key">Đến</span>
-        <span class="turn-val">“Tôi biết mình đang mắc ở đâu, điều gì cần được nhìn rõ hơn và bước tiếp theo của mình là gì.”</span>
-      </div>
+      <p class="lede">Và điều đó hoàn toàn ổn. Một quyết định lớn không nhất thiết phải được chốt trong hai buổi. Điều chúng ta muốn thay đổi là <em>cách bạn đứng trước quyết định đó</em>.</p>
     </div>
-    <p>Bạn có thể chưa có một quyết định cuối cùng. Nhưng bạn có thể bắt đầu biết: mình đang thực sự đứng trước câu hỏi nào, điều gì cần được làm rõ, và mình muốn tiếp tục nhìn nó như thế nào.</p>
-    <p class="small">Và đôi khi, đó đã là một bước tiến rất lớn.</p>
+    <div class="col">
+      <div class="turn">
+        <div class="turn-row from">
+          <span class="turn-key">Từ</span>
+          <span class="turn-val">“Tôi không biết phải làm gì.”</span>
+        </div>
+        <div class="turn-row to">
+          <span class="turn-key">Đến</span>
+          <span class="turn-val">“Tôi biết mình đang mắc ở đâu, điều gì cần được nhìn rõ hơn và bước tiếp theo của mình là gì.”</span>
+        </div>
+      </div>
+      <p>Bạn có thể chưa có một quyết định cuối cùng. Nhưng bạn có thể bắt đầu biết: mình đang thực sự đứng trước câu hỏi nào, điều gì cần được làm rõ, và mình muốn tiếp tục nhìn nó như thế nào.</p>
+      <p class="small">Và đôi khi, đó đã là một bước tiến rất lớn.</p>
+    </div>
   </div>
 </section>
 
 <!-- ========== KHÁC BIỆT ========== -->
-<section>
-  <div class="wrap col measure">
-    <div class="head">
+<section class="deco">
+  <div class="wrap col block">
+    <div class="head center">
       <h2 class="h2">Điều gì khiến cách tiếp cận này khác?</h2>
     </div>
-    <ul class="plain">
+    <ul class="facts nope three">
       <li>Không phải vì bạn sẽ được làm thêm một bài test.</li>
       <li>Không phải vì chúng ta có một công thức “3 bước để tìm đúng nghề”.</li>
       <li>Và cũng không phải vì bạn sẽ được khuyên “hãy dũng cảm nghỉ việc và sống với đam mê”.</li>
     </ul>
-    <p>Điểm khác nằm ở chỗ: chúng ta không bắt đầu bằng việc tìm một công việc mới. Chúng ta bắt đầu bằng việc làm rõ bài toán mà một lựa chọn sự nghiệp cần giải quyết trong cuộc sống thật của bạn.</p>
-    <p class="pull">Bạn không cần một người quyết định thay mình. Bạn cần một cách để tự nhìn, tự phân định và tự quyết định tốt hơn.</p>
+    <div class="col measure">
+      <p class="lede">Điểm khác nằm ở chỗ: chúng ta không bắt đầu bằng việc tìm một công việc mới. Chúng ta bắt đầu bằng việc làm rõ bài toán mà một lựa chọn sự nghiệp cần giải quyết trong cuộc sống thật của bạn.</p>
+      <p class="pull">Bạn không cần một người quyết định thay mình. Bạn cần một cách để tự nhìn, tự phân định và tự quyết định tốt hơn.</p>
+    </div>
   </div>
 </section>
 
@@ -733,7 +922,7 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
       <p>Suốt gần 20 năm đi làm, mình cũng từng có những giai đoạn ở không yên, đi không ổn. Từng đổi việc. Từng đạt những dấu mốc mà nhìn từ bên ngoài có vẻ rất ổn. Nhưng bên trong vẫn có một khoảng trống khó gọi tên.</p>
       <p>Mình từng nghĩ: <em>“Có lẽ chỉ cần tìm được một công việc khác thì mọi thứ sẽ ổn.”</em> Nhưng càng đi, mình càng nhận ra: một cơ hội mới không tự động giải quyết được một cách nhìn cũ.</p>
       <p>Điều mình thiếu không hẳn là thêm một lựa chọn. Mình thiếu một điểm tựa đủ rõ để biết:</p>
-      <ul class="ticks">
+      <ul class="facts">
         <li>Mình thực sự muốn gì.</li>
         <li>Điều gì quan trọng với mình lúc này.</li>
         <li>Và mình sẵn sàng đánh đổi điều gì — hay không.</li>
@@ -743,7 +932,7 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
     </div>
 
     <div class="split-figure">
-      <div class="figure">
+      <div class="figure warm">
         <span class="frame" aria-hidden="true"></span>
         <img src="img/host-portrait.jpg" width="1200" height="1026" loading="lazy" alt="Chân dung người hướng dẫn workshop">
       </div>
@@ -764,9 +953,9 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
 </div>
 
 <!-- ========== VÉ ========== -->
-<section id="giu-cho">
+<section id="giu-cho" class="deco deco-left">
   <div class="wrap col block">
-    <div class="head">
+    <div class="head center">
       <h2 class="h2">Bạn sẽ nhận được gì?</h2>
     </div>
 
@@ -802,33 +991,33 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
           <li><span class="yes" aria-hidden="true">✓</span><span>Template La Bàn Bản Thể cá nhân</span></li>
           <li><span class="yes" aria-hidden="true">✓</span><span>Ebook “Gỡ rối 5 nút thắt tâm lý khi đứng trước một ngã rẽ sự nghiệp”</span></li>
         </ul>
-        <a class="btn btn-primary" href="#giu-cho">Giữ chỗ vé VIP — 149K <span class="arrow">→</span></a>
+        <a class="btn btn-warm" href="#giu-cho">Giữ chỗ vé VIP — 149K <span class="arrow">→</span></a>
       </article>
     </div>
 
-    <p class="small">Với Vé VIP, bạn có toàn bộ recording, template và ebook để quay lại nghiền ngẫm và áp dụng, thay vì chỉ nghe xong rồi để đó.</p>
+    <p class="small center">Với Vé VIP, bạn có toàn bộ recording, template và ebook để quay lại nghiền ngẫm và áp dụng, thay vì chỉ nghe xong rồi để đó.</p>
   </div>
 </section>
 
 <!-- ========== LỜI MỜI ========== -->
-<section>
+<section class="warmth">
   <div class="wrap split img-left xwide">
     <div class="col">
-    <div class="head">
-      <h2 class="h2">Bạn không cần tin tôi trước khi tham gia.</h2>
-    </div>
-    <ul class="plain">
-      <li>Bạn cũng không cần quyết định nghỉ việc.</li>
-      <li>Không cần quyết định chuyển ngành.</li>
-      <li>Không cần biết trước mình muốn làm gì.</li>
-      <li>Và càng không cần phải “sẵn sàng thay đổi cuộc đời”.</li>
-    </ul>
-    <p>Chỉ cần bạn đang có một câu hỏi thật:</p>
-    <p class="pull">“Tôi có thực sự muốn tiếp tục con đường này không — và nếu không, tôi cần dựa vào đâu để biết mình nên đi về đâu?”</p>
-    <p>Hãy dành 2 buổi để dừng lại trước khi tiếp tục chạy. Không phải để nhận một câu trả lời được áp vào từ bên ngoài, mà để bắt đầu xây dựng cách bạn tự trả lời những quyết định lớn của chính mình.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="#giu-cho">Tôi muốn nhìn rõ ngã rẽ của mình <span class="arrow">→</span></a>
-    </div>
+      <div class="head">
+        <h2 class="h2">Bạn không cần tin tôi trước khi tham gia.</h2>
+      </div>
+      <ul class="facts">
+        <li>Bạn cũng không cần quyết định nghỉ việc.</li>
+        <li>Không cần quyết định chuyển ngành.</li>
+        <li>Không cần biết trước mình muốn làm gì.</li>
+        <li>Và càng không cần phải “sẵn sàng thay đổi cuộc đời”.</li>
+      </ul>
+      <p>Chỉ cần bạn đang có một câu hỏi thật:</p>
+      <p class="pull">“Tôi có thực sự muốn tiếp tục con đường này không — và nếu không, tôi cần dựa vào đâu để biết mình nên đi về đâu?”</p>
+      <p>Hãy dành 2 buổi để dừng lại trước khi tiếp tục chạy. Không phải để nhận một câu trả lời được áp vào từ bên ngoài, mà để bắt đầu xây dựng cách bạn tự trả lời những quyết định lớn của chính mình.</p>
+      <div class="cta-row">
+        <a class="btn btn-warm" href="#giu-cho">Tôi muốn nhìn rõ ngã rẽ của mình <span class="arrow">→</span></a>
+      </div>
     </div>
 
     <div class="split-figure">
@@ -841,8 +1030,8 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
 </section>
 
 <!-- ========== FAQ ========== -->
-<section>
-  <div class="wrap col measure">
+<section class="tint">
+  <div class="wrap faq-grid xwide">
     <div class="head">
       <h2 class="h2">Những điều bạn có thể đang băn khoăn</h2>
     </div>
@@ -926,7 +1115,7 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
     </ul>
 
     <div class="cta-row">
-      <a class="btn btn-primary" href="#giu-cho">Giữ chỗ workshop ngay hôm nay <span class="arrow">→</span></a>
+      <a class="btn btn-warm" href="#giu-cho">Giữ chỗ workshop ngay hôm nay <span class="arrow">→</span></a>
     </div>
     <p class="cta-note">Vé Tiêu chuẩn: 0Đ &nbsp;|&nbsp; Vé VIP: 149.000Đ &nbsp;|&nbsp; 2 buổi live Zoom, 13 &amp; 14/11/2026</p>
   </div>
@@ -959,3 +1148,5 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
   });
 })();
 </script>
+</body>
+</html>
