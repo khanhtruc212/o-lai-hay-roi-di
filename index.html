@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Workshop online 2 buổi: làm rõ nên ở lại hay rời đi, theo phương pháp La Bàn Bản Thể™.">
+<meta name="description" content="Workshop online 02 buổi, 13–14/11/2026: thoát khỏi vòng lặp loay hoay trong sự nghiệp và tự chủ định hướng, theo phương pháp La Bàn Bản Thể™.">
 <title>Ở Lại Hay Rời Đi?</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -257,6 +257,13 @@ section:first-of-type{border-top:0}
   font-size:clamp(1.6rem,1.2rem + 1.8vw,2.3rem);line-height:1.3;
   letter-spacing:-.012em;
 }
+/* "Tự chủ định hướng sự nghiệp" — nhãn dưới tiêu đề lớn */
+.hero-tag{
+  display:inline-block;align-self:flex-start;
+  background:var(--accent-tint);color:var(--accent-text);
+  border-radius:100px;padding:7px 18px;
+  font-size:.86rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+}
 
 /* thước phương vị */
 .scale{display:flex;align-items:center;gap:14px}
@@ -373,6 +380,31 @@ section[id]{scroll-margin-top:28px}
   background:var(--band);color:var(--band-ink);border-radius:8px;
   padding:26px 28px;font-size:1.12rem;line-height:1.7;
 }
+.note em{color:#fff;font-style:italic}
+
+/* ================= cam kết hoàn tiền ================= */
+.guarantee{
+  background:var(--surface);border:1px dashed var(--warm);border-radius:8px;
+  padding:24px 26px;display:flex;flex-direction:column;gap:10px;
+}
+.guarantee p{font-size:1.02rem;color:var(--ink-soft)}
+.guarantee .g-title{
+  font-family:var(--f-display);font-weight:500;font-size:1.3rem;line-height:1.35;
+  color:var(--warm-text);letter-spacing:-.01em;
+}
+.guarantee .g-title::before{content:"✓";margin-right:10px;font-family:var(--f-body);font-weight:700}
+
+/* ================= chữ ký người hướng dẫn ================= */
+.bio{
+  border-top:1px solid var(--rule);padding-top:20px;
+  display:flex;flex-direction:column;gap:2px;
+}
+.bio-name{
+  font-family:var(--f-display);font-weight:500;
+  font-size:clamp(1.35rem,1.1rem + .7vw,1.65rem);line-height:1.3;
+  letter-spacing:-.012em;color:var(--ink);margin-bottom:6px;
+}
+.bio-role{font-size:.98rem;line-height:1.6;color:var(--muted)}
 
 /* ================= Từ → Đến ================= */
 .turn{display:flex;flex-direction:column;background:var(--surface);border-radius:8px;overflow:hidden;box-shadow:0 10px 26px -20px rgba(7,63,66,.55)}
@@ -416,6 +448,8 @@ section[id]{scroll-margin-top:28px}
 .band p{color:var(--band-muted)}
 .band em{color:var(--band-ink)}
 .band .pull{color:var(--band-ink);border-left-color:var(--warm)}
+.band .ticks li{color:var(--band-muted)}
+.band .ticks li::before{background:rgba(111,204,205,.16);color:var(--band-accent)}
 
 /* ================= ảnh một bên, chữ một bên ================= */
 .split{display:grid;grid-template-columns:1fr;gap:clamp(32px,4vw,56px);align-items:center}
@@ -613,6 +647,7 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
     <div class="hero-lead">
       <p class="eyebrow">Workshop online <span class="dot">·</span> 2 buổi live Zoom <span class="dot">·</span> 13 &amp; 14/11/2026</p>
       <h1>Ở lại<br>hay rời đi<span class="q">?</span></h1>
+      <p class="hero-tag">Tự chủ định hướng sự nghiệp</p>
     </div>
 
     <div class="hero-rest">
@@ -623,10 +658,14 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
       </div>
       <div class="for-who">
         <span class="for-label">Dành cho</span>
-        <p>người đã đi làm nhiều năm nhưng vẫn luôn cảm thấy mông lung về hướng đi sự nghiệp.</p>
+        <p>người đã đi làm nhiều năm nhưng vẫn mông lung, do dự trước những ngã rẽ sự nghiệp.</p>
       </div>
-      <p class="pull">Ở lại thì không muốn.<br>Bước đi thì chưa dám.</p>
-      <a class="jump" href="#hanh-trinh">Xem hành trình 2 buổi <span class="down" aria-hidden="true">↓</span></a>
+      <p class="lede">Có thể bạn chưa biết mình thực sự muốn đi đâu. Hoặc bạn đã biết mình muốn gì, nhưng vẫn chưa thể bước tới với lựa chọn ấy.</p>
+      <p class="pull">Ở lại thì mòn mỏi.<br>Bước đi thì bất an.</p>
+      <div class="cta-row">
+        <a class="btn btn-warm" href="#giu-cho">Giữ chỗ workshop <span class="arrow">→</span></a>
+        <a class="jump" href="#hanh-trinh">Xem hành trình 2 buổi <span class="down" aria-hidden="true">↓</span></a>
+      </div>
     </div>
 
     <!-- ảnh đặt cuối trong mã nguồn: điện thoại đọc chữ trước, ảnh theo sau -->
@@ -644,7 +683,7 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
   <div class="ticker-track">
     <div class="ticker-group">
       <span class="ticker-item em">Ở lại hay rời đi?</span><span class="ticker-sep">✦</span>
-      <span class="ticker-item em">Nhìn rõ trước khi quyết định</span><span class="ticker-sep">✦</span>
+      <span class="ticker-item em">Tự chủ định hướng sự nghiệp</span><span class="ticker-sep">✦</span>
       <span class="ticker-item">La Bàn Bản Thể™</span><span class="ticker-sep">✦</span>
       <span class="ticker-item cap">2 buổi live Zoom · 13 &amp; 14/11/2026</span><span class="ticker-sep">✦</span>
     </div>
@@ -654,10 +693,14 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
 <!-- ========== LỜI HỨA ========== -->
 <section class="deco">
   <div class="wrap split top xwide">
-    <p class="hero-claim">Thoát khỏi sự hoang mang về hướng đi sự nghiệp. Biết rõ nên bước tiếp thế nào.</p>
+    <p class="hero-claim">Thoát khỏi vòng lặp loay hoay trong sự nghiệp.</p>
     <div class="col">
-      <p class="lede">Khám phá phương pháp giúp bạn làm rõ lựa chọn phù hợp với chính mình — hài hòa giữa điều mình mong muốn và những trách nhiệm, ràng buộc đang có — để có thể dấn thân với sự sáng rõ và vững vàng hơn.</p>
-      <p class="pull">Bạn không cần quyết định nghỉ việc hôm nay. Bạn cần một điểm tựa đủ rõ để biết mình cần nhìn vào đâu trước khi quyết định.</p>
+      <p class="lede">Khám phá cách tự định hướng, lựa chọn, dấn thân và hiệu chỉnh để kiến tạo một hành trình sự nghiệp ý nghĩa, trọn vẹn theo cách riêng của mình.</p>
+      <p>Bạn không cần ép mình phải có ngay một đáp án cuối cùng.</p>
+      <p class="pull">Hãy bắt đầu bằng việc nhìn rõ điều gì đang dẫn đường cho những lựa chọn của mình.</p>
+      <div class="cta-row">
+        <a class="btn btn-warm" href="#giu-cho">Giữ chỗ workshop <span class="arrow">→</span></a>
+      </div>
     </div>
   </div>
 </section>
@@ -675,9 +718,9 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
         <li>Bạn đã mất nhiều năm để gây dựng nó.</li>
       </ul>
       <p>Gia đình, con cái, khoản vay, bảo hiểm và những trách nhiệm đang có… khiến việc “cứ thế mà nghỉ” chưa bao giờ là một lựa chọn đơn giản.</p>
-      <p>Nhìn từ bên ngoài, có lẽ bạn vẫn đang có một sự nghiệp đáng mơ ước. Nhưng bên trong, một câu hỏi ngày càng khó phớt lờ:</p>
-      <p class="pull">“Mình có thực sự muốn sống như thế này thêm 5, 10 hay 20 năm nữa không?”</p>
-      <p>Và rồi bạn rơi vào một trạng thái rất khó chịu: ở lại thì mòn mỏi, bước đi thì bất an.</p>
+      <p>Nhìn từ bên ngoài, có lẽ bạn vẫn đang có một sự nghiệp mà nhiều người mong muốn. Nhưng bên trong, một câu hỏi ngày càng khó phớt lờ:</p>
+      <p class="pull">“Liệu mình có đang đi đúng hướng không ta?”</p>
+      <p>Và rồi bạn mắc kẹt giữa hai phía: <strong>ở lại thì mòn mỏi, bước đi thì bất an.</strong></p>
     </div>
 
     <div class="split-figure">
@@ -696,14 +739,14 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
       <h2 class="h2">Có thể bạn đang ở một trong những điểm này</h2>
     </div>
     <ul class="cards">
-      <li>Bạn biết mình không muốn tiếp tục như cũ, nhưng lại chưa rõ mình thực sự muốn điều gì.</li>
-      <li>Bạn biết mình muốn thay đổi, nhưng khi nghĩ đến gia đình, thu nhập và những gì đã gây dựng, đôi chân lại chùn bước.</li>
-      <li>Bạn không chắc mình thật sự không hợp với công việc, hay chỉ đang quá mệt với cách mình đang sống.</li>
-      <li>Bạn đã nghĩ đến chuyện đổi công ty, đổi vị trí, chuyển ngành hoặc làm một điều gì đó khác — nhưng càng nghĩ càng có quá nhiều biến số.</li>
+      <li>Bạn biết mình không muốn tiếp tục như cũ, nhưng lại chưa rõ mình thực sự muốn đi về đâu.</li>
+      <li>Bạn đã nghĩ đến chuyện đổi công ty, đổi vị trí, chuyển ngành hoặc làm một điều gì đó khác. Nhưng càng tìm hiểu, càng có nhiều hướng để cân nhắc.</li>
+      <li>Bạn không chắc vấn đề thật sự nằm ở công việc hiện tại, hay còn có một điều gì đó sâu hơn mà mình vẫn chưa gọi tên được.</li>
+      <li>Bạn biết điều gì quan trọng với mình, thậm chí biết mình muốn thay đổi, nhưng khi đặt nó cạnh thu nhập, gia đình, con cái và những gì đã gây dựng, bạn không biết đâu mới là hướng mình nên đi.</li>
+      <li>Bạn có thể đã hình dung ra một lựa chọn mình muốn thử, nhưng vẫn không chắc đó có phải là hướng đi đúng với mình hay không.</li>
       <li>Bạn sợ một lựa chọn sai có thể khiến mình mất đi những gì đã mất nhiều năm mới xây được.</li>
-      <li>Nhưng đồng thời, bạn cũng sợ một ngày nhìn lại và nhận ra mình đã ở lại quá lâu chỉ vì sợ.</li>
     </ul>
-    <p class="note">Điều khiến bạn mắc kẹt không phải vì bạn thiếu năng lực. Có thể chỉ là bạn đang phải đưa ra một quyết định rất lớn trong khi chưa có một cách đủ rõ để biết điều gì thực sự quan trọng với mình ở giai đoạn này của cuộc đời.</p>
+    <p class="note">Nhưng đồng thời, bạn cũng sợ một ngày nhìn lại và nhận ra mình đã ở lại quá lâu — không phải vì đó là hướng mình thực sự muốn đi, mà vì mình chưa biết phải làm thế nào để bước sang một hướng khác.</p>
   </div>
 </section>
 
@@ -715,22 +758,21 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
         <h2 class="h2">Bạn có thể đã thử rất nhiều cách.</h2>
       </div>
       <ul class="tags">
-        <li>Đổi công ty</li>
-        <li>Đổi vị trí</li>
-        <li>Tìm việc lương cao hơn</li>
-        <li>Tìm việc nhẹ nhàng hơn</li>
+        <li>Đổi công việc</li>
+        <li>Muốn đổi ngành</li>
+        <li>Nghĩ đến chuyện startup</li>
         <li>MBTI</li>
         <li>DISC</li>
         <li>SWOT</li>
         <li>Đọc sách</li>
         <li>Nói chuyện với mentor</li>
-        <li>Viết ưu – nhược điểm</li>
-        <li>Lướt LinkedIn</li>
-        <li>Xin nghỉ phép, đi du lịch để “reset”</li>
+        <li>Viết ra ưu – nhược điểm</li>
+        <li>Xin nghỉ phép</li>
+        <li>Đi đâu đó để “reset”</li>
       </ul>
-      <p>Những cách đó không nhất thiết là sai. Chúng có thể cho bạn thêm thông tin, thêm góc nhìn, thêm lựa chọn. Nhưng có một khác biệt quan trọng:</p>
-      <p class="pull">Có thêm thông tin không đồng nghĩa với việc bạn biết phải quyết định thế nào.</p>
-      <p>Bạn có thể có 10 lựa chọn. 20 lời khuyên. Hàng trăm bài viết. Nhưng cuối cùng vẫn quay lại câu hỏi: <em>“Vậy với chính tôi, ở thời điểm này, lựa chọn nào mới thực sự đáng để đánh đổi?”</em></p>
+      <p>Những cách đó đều có giá trị. Chúng có thể cho bạn thêm thông tin, thêm góc nhìn, thêm những khả năng để cân nhắc. Nhưng có một khác biệt rất lớn:</p>
+      <p class="pull">Có thêm thông tin không đồng nghĩa với việc bạn biết đâu mới là hướng đi đúng với mình.</p>
+      <p>Bạn có thể làm 10 bài test về bản thân. Nghiên cứu thêm về thị trường. Nghe thêm 20 lời khuyên. Đọc thêm rất nhiều bài viết. Nhìn thấy thêm vài con đường.</p>
     </div>
 
     <div class="split-figure">
@@ -746,7 +788,7 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
 <section class="breather">
   <div class="wrap">
     <span class="tick" aria-hidden="true"></span>
-    <p>Công việc vẫn khá ổn. Nhưng bạn không chắc mình muốn sống với nó thêm 5, 10 hay 20 năm nữa.</p>
+    <p>Nhưng cuối cùng, bạn vẫn có thể quay lại với một câu hỏi cũ: “Đâu mới là hướng đi đúng với mình?”</p>
   </div>
 </section>
 
@@ -755,23 +797,32 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
   <div class="wrap split top text-wide xwide">
     <div class="col">
       <div class="head">
-        <h2 class="h2">Có thể vấn đề không phải là bạn thiếu một lựa chọn.</h2>
+        <h2 class="h2">Đôi khi điều khiến bạn kẹt lại không nằm ở chính lựa chọn.</h2>
       </div>
-      <p class="lede">Mà là bạn chưa có một cách đủ rõ để đánh giá những lựa chọn đang có.</p>
-      <p>Khi chưa biết điều gì thực sự quan trọng với mình, rất dễ đánh giá một công việc bằng những tiêu chuẩn có sẵn:</p>
+      <p class="lede">Mà ở cách bạn đang nhìn tình huống của mình, nhìn chính mình, nhìn điều mình muốn hướng tới và nhìn những lựa chọn đang có trước mắt.</p>
+      <p>Khi đứng trước một ngã rẽ, chúng ta thường dồn sự chú ý vào những gì rất thực tế:</p>
       <ul class="tags warm">
-        <li>Lương cao hơn</li>
-        <li>Chức danh tốt hơn</li>
-        <li>Công ty nổi tiếng hơn</li>
-        <li>Ít áp lực hơn</li>
-        <li>Nhiều cơ hội hơn</li>
+        <li>Lương</li>
+        <li>Vị trí</li>
+        <li>Năng lực chuyên môn</li>
+        <li>Cơ hội tận dụng thế mạnh &amp; kinh nghiệm đã có</li>
+        <li>Rủi ro</li>
+        <li>Những gì mình đã gây dựng</li>
       </ul>
-      <p>Nhưng một lựa chọn có thể rất tốt trên giấy tờ — và vẫn không phải là lựa chọn tốt cho cuộc đời bạn.</p>
-      <p>Bởi vì đến một giai đoạn nào đó, câu hỏi không còn đơn giản là “Job nào tốt hơn?”, mà có thể là:</p>
+      <p>Những điều đó đều đáng để cân nhắc. Nhưng nếu:</p>
+      <ul class="ticks">
+        <li>chưa nhìn rõ điều gì thực sự đang khiến mình kẹt lại,</li>
+        <li>chưa rõ mình đang muốn đi về đâu,</li>
+        <li>chưa biết mình cần nhìn vào đâu để có thể đưa ra một lựa chọn phù hợp,</li>
+        <li>chưa có một cơ sở đủ rõ để biết điều gì cần được cân nhắc khi đứng trước những hướng đi khác nhau,</li>
+      </ul>
+      <p>thì bạn rất dễ mãi loay hoay giữa những gì mình đang phân tích và đo đếm.</p>
     </div>
     <div class="quote-card">
-      <p class="pull">“Tôi thực sự muốn xây dựng cuộc sống nào trong giai đoạn này — và lựa chọn sự nghiệp nào phù hợp với con người, hoàn cảnh và những điều tôi không muốn đánh đổi?”</p>
-      <p>Đôi khi, điều khiến một quyết định trở nên bế tắc không phải vì bạn thiếu câu trả lời. Mà vì bạn đang cố trả lời một câu hỏi chưa đúng.</p>
+      <p>Bởi khi đó, ta chẳng biết nên buông gì, giữ gì, nhất là khi mỗi lựa chọn đều có những lý do để mình tiếp tục và cũng có những lý do để mình dừng lại.</p>
+      <p>Và khi mọi thứ còn mập mờ, bạn rất khó nhận ra đâu mới là hướng đi đúng với mình, ngay cả khi một khả năng phù hợp đang ở ngay trước mắt.</p>
+      <p class="pull">Có lẽ, trước khi cố tìm cho ra câu trả lời “Đâu mới là hướng đi đúng với mình?”, ta cần nhìn lại những điều mình có thể đang bỏ sót và điều gì không cần mang theo.</p>
+      <p>Và đó cũng là điểm bắt đầu của La Bàn Bản Thể™.</p>
     </div>
   </div>
 </section>
@@ -792,16 +843,21 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
         <circle cx="38" cy="38" r="2" fill="currentColor"/>
       </svg>
       <div class="head">
-        <h2 class="h2">Cách tiếp cận khác của La Bàn Bản Thể<span class="tm">™</span></h2>
+        <h2 class="h2">La Bàn Bản Thể<span class="tm">™</span> — một cách tiếp cận khác</h2>
       </div>
     </div>
 
     <div class="col">
-      <p>La Bàn Bản Thể™ không bắt đầu bằng <em>“Bạn hợp nghề gì?”</em>. Cũng không bắt đầu bằng <em>“Bạn nên nghỉ việc hay không?”</em>. Và càng không cố đưa cho bạn một đáp án nghề nghiệp có sẵn.</p>
-      <p>Thay vào đó, bạn sẽ được dẫn qua một hành trình để nhìn lại chính bài toán mà mình đang cố giải.</p>
-      <p>Bởi một quyết định sự nghiệp không chỉ là chuyện chọn một công việc. Nó chạm vào rất nhiều thứ đang diễn ra trong cuộc sống của bạn. Và đó cũng là lý do tại sao một câu trả lời có vẻ rất hợp lý trên giấy tờ đôi khi vẫn khiến bạn không thể thật sự yên tâm với nó.</p>
-      <p>La Bàn Bản Thể™ bắt đầu từ chính chỗ đó. Không vội đưa bạn đến một đáp án, mà giúp bạn nhìn rõ điều gì đang thực sự cần được nhìn rõ trước khi quyết định.</p>
-      <p class="pull">Mục tiêu không phải tìm ra một lựa chọn “tốt nhất” trên lý thuyết. Mà là đủ rõ ràng để nhận ra: lựa chọn nào đáng để mình dấn thân — trong chính cuộc đời mình.</p>
+      <p>La Bàn Bản Thể™ không bắt đầu bằng câu hỏi <em>“Bạn hợp nghề gì?”</em> Hay <em>“Bạn nên nghỉ việc hay ở lại?”</em> Và cũng không đưa cho bạn một đáp án nghề nghiệp có sẵn.</p>
+      <p>Bởi một quyết định về sự nghiệp hiếm khi chỉ là quyết định về một công việc. Nó có thể chạm đến rất nhiều khía cạnh khác trong cuộc sống — thậm chí định hình nên phiên bản tiếp theo của một người và cuộc đời họ sẽ sống.</p>
+      <p>Vì vậy, La Bàn Bản Thể™ không vội đưa bạn đến một lựa chọn. Nó bắt đầu bằng việc nhìn lại cách bạn đang đứng trước một lựa chọn.</p>
+      <p>Trong Workshop này, bạn sẽ bắt đầu khám phá một cách tiếp cận khác để nhìn những ngã rẽ sự nghiệp của chính mình. Bạn sẽ bắt đầu nhìn ra:</p>
+      <ul class="ticks">
+        <li>Điều gì có thể đang thực sự khiến mình mắc kẹt.</li>
+        <li>Điều gì mình đang nhìn thấy — và điều gì có thể mình chưa nhìn thấy.</li>
+        <li>Và điều gì còn cần được làm rõ trước một quyết định lớn.</li>
+      </ul>
+      <p class="pull">Trong 2 buổi, bạn sẽ bắt đầu làm quen với cách nhìn của La Bàn Bản Thể™. Không phải để có ngay một đáp án. Mà để mở ra một cách khác để nhìn, lựa chọn và bước tiếp.</p>
     </div>
   </div>
 </section>
@@ -811,7 +867,7 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
   <div class="ticker-track">
     <div class="ticker-group">
       <span class="ticker-item em">Ở lại hay rời đi?</span><span class="ticker-sep">✦</span>
-      <span class="ticker-item em">Nhìn rõ trước khi quyết định</span><span class="ticker-sep">✦</span>
+      <span class="ticker-item em">Tự chủ định hướng sự nghiệp</span><span class="ticker-sep">✦</span>
       <span class="ticker-item">La Bàn Bản Thể™</span><span class="ticker-sep">✦</span>
       <span class="ticker-item cap">2 buổi live Zoom · 13 &amp; 14/11/2026</span><span class="ticker-sep">✦</span>
     </div>
@@ -822,47 +878,45 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
 <section id="hanh-trinh">
   <div class="wrap col xwide">
     <div class="head center">
-      <h2 class="h2">Bạn sẽ đi qua điều gì trong 2 buổi?</h2>
+      <h2 class="h2">Bạn sẽ đi qua hành trình nào trong 2 buổi?</h2>
     </div>
 
     <div class="sessions">
       <article class="session">
-        <p class="session-no"><span class="num">Buổi 1</span> Nhìn rõ điểm nghẽn</p>
+        <p class="session-no"><span class="num">Buổi 01</span> Từ mất phương hướng đến lấy lại năng lực tự dẫn đường</p>
         <div class="turn">
           <div class="turn-row from">
             <span class="turn-key">Từ</span>
-            <span class="turn-val">“Có gì đó không ổn, nhưng tôi không biết chính xác là gì.”</span>
+            <span class="turn-val">“Mình không biết mình đang dựa vào đâu để lựa chọn.”</span>
           </div>
           <div class="turn-row to">
             <span class="turn-key">Đến</span>
-            <span class="turn-val">“Tôi hiểu rõ hơn mình thực sự đang mắc ở đâu.”</span>
+            <span class="turn-val">“Mình nhận ra chiếc la bàn nào đang dẫn đường cho mình.”</span>
           </div>
         </div>
-        <p>Trong buổi đầu tiên, bạn sẽ dừng lại đủ lâu để nhìn toàn cảnh bài toán của mình, thay vì tiếp tục chạy đi tìm một câu trả lời mới. Bạn sẽ nhìn vào mối quan hệ giữa:</p>
         <ul class="ticks">
-          <li>công việc hiện tại;</li>
-          <li>điều bạn đang mong muốn;</li>
-          <li>những gì bạn đang chịu trách nhiệm;</li>
-          <li>những điều khiến bạn do dự;</li>
-          <li>và những yếu tố đang ảnh hưởng đến cách bạn nhìn một lựa chọn.</li>
+          <li>Nhận diện hiện trạng chiếc la bàn đang dẫn đường cho mình.</li>
+          <li>Nguyên lý tìm về chiếc la bàn đúng chuẩn.</li>
+          <li>Chìa khoá kích hoạt năng lực tự dẫn đường.</li>
         </ul>
-        <p class="small">Bạn không cần phải tìm ra câu trả lời cuối cùng. Mục tiêu của buổi 1 là giúp bạn nhìn đúng bài toán trước khi cố giải nó.</p>
       </article>
 
       <article class="session">
-        <p class="session-no"><span class="num">Buổi 2</span> Xây điểm tựa để ra quyết định</p>
+        <p class="session-no"><span class="num">Buổi 02</span> Hệ quy chiếu giúp tự định hướng</p>
         <div class="turn">
           <div class="turn-row from">
             <span class="turn-key">Từ</span>
-            <span class="turn-val">“Tôi có quá nhiều thứ phải cân nhắc.”</span>
+            <span class="turn-val">“Mình có quá nhiều thứ phải cân nhắc.”</span>
           </div>
           <div class="turn-row to">
             <span class="turn-key">Đến</span>
-            <span class="turn-val">“Tôi biết điều gì thực sự cần được cân nhắc khi lựa chọn.”</span>
+            <span class="turn-val">“Mình có một hệ quy chiếu để tự định hướng, thay vì chỉ tự quyết.”</span>
           </div>
         </div>
-        <p>Ở buổi thứ hai, bạn sẽ trải nghiệm phương pháp La Bàn Bản Thể™ để bắt đầu xây dựng một hệ quy chiếu phù hợp với chính mình.</p>
-        <p>Không phải một bộ tiêu chuẩn chung cho tất cả mọi người. Không phải một công thức bảo đảm bạn sẽ chọn đúng. Mà là một điểm tựa để bạn có thể nhìn những ngã rẽ của mình rõ hơn, bình tĩnh hơn và có chủ đích hơn.</p>
+        <ul class="ticks">
+          <li>Khám phá điều gì làm nên một hệ quy chiếu giúp bạn tự định hướng thay vì chỉ tự quyết.</li>
+          <li>Bắt đầu xây dựng La Bàn Bản Thể để tự định hướng trong những lựa chọn thật.</li>
+        </ul>
       </article>
     </div>
   </div>
@@ -870,27 +924,18 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
 
 <!-- ========== KẾT QUẢ ========== -->
 <section class="warmth">
-  <div class="wrap split xwide">
-    <div class="col">
-      <div class="head">
-        <h2 class="h2">Sau 2 buổi, bạn có thể chưa có một “đáp án cuối cùng”.</h2>
-      </div>
-      <p class="lede">Và điều đó hoàn toàn ổn. Một quyết định lớn không nhất thiết phải được chốt trong hai buổi. Điều chúng ta muốn thay đổi là <em>cách bạn đứng trước quyết định đó</em>.</p>
+  <div class="wrap col block">
+    <div class="head center">
+      <h2 class="h2">Giá trị nhận được sau Workshop</h2>
     </div>
-    <div class="col">
-      <div class="turn">
-        <div class="turn-row from">
-          <span class="turn-key">Từ</span>
-          <span class="turn-val">“Tôi không biết phải làm gì.”</span>
-        </div>
-        <div class="turn-row to">
-          <span class="turn-key">Đến</span>
-          <span class="turn-val">“Tôi biết mình đang mắc ở đâu, điều gì cần được nhìn rõ hơn và bước tiếp theo của mình là gì.”</span>
-        </div>
-      </div>
-      <p>Bạn có thể chưa có một quyết định cuối cùng. Nhưng bạn có thể bắt đầu biết: mình đang thực sự đứng trước câu hỏi nào, điều gì cần được làm rõ, và mình muốn tiếp tục nhìn nó như thế nào.</p>
-      <p class="small">Và đôi khi, đó đã là một bước tiến rất lớn.</p>
-    </div>
+    <p class="lede center measure">Workshop này trao cho bạn những chìa khóa để:</p>
+    <ul class="cards">
+      <li>Tìm về La Bàn Bản Thể™.</li>
+      <li>Hiểu những nguyên lý gốc rễ để chuyển hoá sự loay hoay, mông lung thành sự rõ ràng, vững chãi.</li>
+      <li>Tự tay xây dựng hệ quy chiếu dẫn đường cho những lựa chọn phía trước — trong bình an, vững vàng và tự chủ.</li>
+      <li>Trở về để thấu hiểu, sáng rõ từ bên trong; bắt đầu bước đi như một người tự dẫn dắt chính mình trong đời sống thật.</li>
+    </ul>
+    <p class="note">Bạn không cần ép mình phải có ngay một đáp án cuối cùng. Một quyết định lớn không nhất thiết phải được chốt trong hai buổi — điều thay đổi là <em>cách bạn đứng trước quyết định đó</em>.</p>
   </div>
 </section>
 
@@ -898,16 +943,19 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
 <section class="deco">
   <div class="wrap col block">
     <div class="head center">
-      <h2 class="h2">Điều gì khiến cách tiếp cận này khác?</h2>
+      <h2 class="h2">Điều gì khiến La Bàn Bản Thể<span class="tm">™</span> khác?</h2>
     </div>
     <ul class="facts nope three">
-      <li>Không phải vì bạn sẽ được làm thêm một bài test.</li>
-      <li>Không phải vì chúng ta có một công thức “3 bước để tìm đúng nghề”.</li>
-      <li>Và cũng không phải vì bạn sẽ được khuyên “hãy dũng cảm nghỉ việc và sống với đam mê”.</li>
+      <li>Không bắt đầu bằng “Bạn hợp nghề gì?”</li>
+      <li>Không bắt đầu bằng “Bạn nên nghỉ việc hay ở lại?”</li>
+      <li>Không vội đưa cho bạn thêm một lựa chọn.</li>
     </ul>
     <div class="col measure">
-      <p class="lede">Điểm khác nằm ở chỗ: chúng ta không bắt đầu bằng việc tìm một công việc mới. Chúng ta bắt đầu bằng việc làm rõ bài toán mà một lựa chọn sự nghiệp cần giải quyết trong cuộc sống thật của bạn.</p>
-      <p class="pull">Bạn không cần một người quyết định thay mình. Bạn cần một cách để tự nhìn, tự phân định và tự quyết định tốt hơn.</p>
+      <p class="lede">Mà bắt đầu từ một câu hỏi sâu hơn:</p>
+      <p class="pull">“Bạn đang dựa vào đâu để biết đâu mới là hướng đi đúng với mình?”</p>
+      <p>Bởi khi đứng trước một bước ngoặt lớn, điều khiến chúng ta loay hoay đôi khi không phải vì thiếu lựa chọn. Mà vì vẫn đang đánh giá những lựa chọn của hôm nay bằng một cách nhìn từng rất đúng với mình trước đây nhưng không còn đủ cho giai đoạn cuộc đời hiện tại.</p>
+      <p>Chính khoảng lệch ấy tạo ra những giằng co, mâu thuẫn và cảm giác mông lung, ngay cả khi trước mắt có những cơ hội rất phù hợp.</p>
+      <p>La Bàn Bản Thể™ giúp bạn nhận ra điều gì cần được nhìn lại trước khi lựa chọn — để từ đó bắt đầu hình thành một điểm tựa rõ hơn khi nhìn những cơ hội sự nghiệp trước mắt và bước tiếp với hướng đi mình lựa chọn.</p>
     </div>
   </div>
 </section>
@@ -919,16 +967,27 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
       <div class="head">
         <h2 class="h2">Mình cũng từng ở đó.</h2>
       </div>
-      <p>Suốt gần 20 năm đi làm, mình cũng từng có những giai đoạn ở không yên, đi không ổn. Từng đổi việc. Từng đạt những dấu mốc mà nhìn từ bên ngoài có vẻ rất ổn. Nhưng bên trong vẫn có một khoảng trống khó gọi tên.</p>
-      <p>Mình từng nghĩ: <em>“Có lẽ chỉ cần tìm được một công việc khác thì mọi thứ sẽ ổn.”</em> Nhưng càng đi, mình càng nhận ra: một cơ hội mới không tự động giải quyết được một cách nhìn cũ.</p>
-      <p>Điều mình thiếu không hẳn là thêm một lựa chọn. Mình thiếu một điểm tựa đủ rõ để biết:</p>
+      <p>Mình từng nghĩ chỉ cần tìm một công việc khác, đổi một môi trường khác, gặp những con người khác… thì mọi thứ sẽ tốt hơn.</p>
+      <p>Nhưng sau gần 20 năm đi làm và qua nhiều lần thay đổi công việc, mình nhận ra: mỗi giai đoạn, mình lại có một kiểu mắc kẹt khác nhau.</p>
       <ul class="facts">
-        <li>Mình thực sự muốn gì.</li>
-        <li>Điều gì quan trọng với mình lúc này.</li>
-        <li>Và mình sẵn sàng đánh đổi điều gì — hay không.</li>
+        <li>Có lúc không biết mình thực sự muốn gì, nên ở lại mà lòng vẫn bứt rứt.</li>
+        <li>Có lúc biết mình muốn gì rồi, nhưng vẫn không dám bước vì những điều phải đánh đổi.</li>
+        <li>Có lúc đã sang một “bến mới”, nhưng tâm trí vẫn quanh quẩn với những câu hỏi cũ: <em>“Liệu mình có đang đi đúng hướng không ta?”</em>, <em>“Đâu mới là hướng đi đúng với mình?”</em></li>
       </ul>
-      <p>Hành trình học khai vấn chuyên sâu, cùng nhiều năm trải nghiệm trong công việc và những lần tự mình đứng trước các ngã rẽ, đã giúp mình từng bước xây dựng phương pháp La Bàn Bản Thể™.</p>
-      <p class="small">Workshop này là cơ hội để bạn trải nghiệm phương pháp đó trên chính bài toán của mình.</p>
+      <p>Và rồi mình nhận ra: không phải lúc nào điều mình cần cũng là một công việc mới.</p>
+      <p>Càng học sâu về khai vấn, càng có cơ hội đồng hành cùng những người đang đứng trước câu hỏi <em>“Ở lại hay Rời đi?”</em>, mình càng nhìn rõ một điều:</p>
+      <p class="pull">Điều khiến chúng ta mắc kẹt đôi khi không phải vì thiếu một cơ hội tốt. Mà vì cách mình đang nhìn tình huống và những lựa chọn trước mắt có thể chưa còn đủ để giúp mình nhận ra đâu là hướng đi phù hợp với mình ở thời điểm hiện tại.</p>
+      <p>Từ những trải nghiệm của chính mình, cùng quá trình học hỏi, nghiên cứu và đồng hành 1:1, mình từng bước hệ thống hóa những điều đã giúp mình nhìn lại và định hướng khác đi thành La Bàn Bản Thể™.</p>
+      <p>Mình không mong bạn phải mất nhiều năm chần chừ trước thay đổi, rồi thay đổi xong vẫn tiếp tục hoang mang — như mình và nhiều người khác từng trải qua — mới bắt đầu nhìn thấy điều này.</p>
+      <p>Nếu bạn đang đứng ở một ngã rẽ, có lẽ điều đáng để bắt đầu không phải là vội tìm một đáp án. Mà là dành thời gian nhìn lại cách mình đang đứng trước lựa chọn ấy.</p>
+
+      <div class="bio">
+        <p class="bio-name">Coach Thy Huỳnh</p>
+        <p class="bio-role">Practitioner Coach – EMCC Certified</p>
+        <p class="bio-role">Coach – Trainer – Mentor về Sự nghiệp • Chuyển hóa nội tâm</p>
+        <p class="bio-role">Founder S.O.I – Không gian Khai vấn &amp; Học tập Chuyển hóa Nội tâm</p>
+        <p class="bio-role">Người phát triển phương pháp La Bàn Bản Thể™</p>
+      </div>
     </div>
 
     <div class="split-figure">
@@ -945,9 +1004,9 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
   <div class="ticker-track">
     <div class="ticker-group">
       <span class="ticker-item em">Ở lại hay rời đi?</span><span class="ticker-sep">✦</span>
-      <span class="ticker-item em">Nhìn rõ trước khi quyết định</span><span class="ticker-sep">✦</span>
+      <span class="ticker-item em">Tự chủ định hướng sự nghiệp</span><span class="ticker-sep">✦</span>
       <span class="ticker-item">La Bàn Bản Thể™</span><span class="ticker-sep">✦</span>
-      <span class="ticker-item cap">2 buổi live Zoom · 13 &amp; 14/11/2026</span><span class="ticker-sep">✦</span>
+      <span class="ticker-item cap">Vé 0Đ · Vé VIP 99.000Đ</span><span class="ticker-sep">✦</span>
     </div>
   </div>
 </div>
@@ -956,7 +1015,7 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
 <section id="giu-cho" class="deco deco-left">
   <div class="wrap col block">
     <div class="head center">
-      <h2 class="h2">Bạn sẽ nhận được gì?</h2>
+      <h2 class="h2">Quyền lợi tham gia</h2>
     </div>
 
     <div class="tickets">
@@ -965,37 +1024,33 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
           <p class="ticket-name">Vé tiêu chuẩn</p>
           <p class="ticket-price">0<span class="cur">Đ</span></p>
         </div>
-        <p class="ticket-for">Dành cho bạn nếu muốn trực tiếp trải nghiệm workshop và tự mình kiểm chứng phương pháp.</p>
+        <p class="ticket-for">Tham gia trực tiếp 02 buổi Workshop và trải nghiệm các bài tập cùng cộng đồng.</p>
         <ul class="perks">
-          <li><span class="yes" aria-hidden="true">✓</span><span>Tham gia trực tiếp 02 buổi Workshop Live Zoom</span></li>
-          <li><span class="yes" aria-hidden="true">✓</span><span>Trải nghiệm phương pháp La Bàn Bản Thể™</span></li>
-          <li><span class="yes" aria-hidden="true">✓</span><span>Bộ worksheet thực hành</span></li>
-          <li class="off"><span class="no" aria-hidden="true">—</span><span>Xem lại bản ghi hình trọn đời</span></li>
-          <li class="off"><span class="no" aria-hidden="true">—</span><span>Template La Bàn Bản Thể cá nhân</span></li>
-          <li class="off"><span class="no" aria-hidden="true">—</span><span>Ebook “Gỡ rối 5 nút thắt tâm lý khi đứng trước một ngã rẽ sự nghiệp”</span></li>
+          <li><span class="yes" aria-hidden="true">✓</span><span>02 buổi Workshop Live Zoom</span></li>
+          <li><span class="yes" aria-hidden="true">✓</span><span>Trải nghiệm La Bàn Bản Thể™</span></li>
+          <li><span class="yes" aria-hidden="true">✓</span><span>Worksheet thực hành</span></li>
+          <li class="off"><span class="no" aria-hidden="true">—</span><span>Recording xem lại trong 04 tuần</span></li>
         </ul>
-        <a class="btn btn-ghost" href="#giu-cho">Giữ chỗ vé tiêu chuẩn — 0đ</a>
+        <a class="btn btn-ghost" href="#giu-cho">Giữ chỗ vé tiêu chuẩn — 0Đ</a>
       </article>
 
       <article class="ticket vip">
         <div class="col-tight">
           <p class="ticket-name">Vé VIP</p>
-          <p class="ticket-price">149.000<span class="cur">Đ</span></p>
+          <p class="ticket-price">99.000<span class="cur">Đ</span></p>
         </div>
-        <p class="ticket-for">Dành cho bạn nếu muốn có đầy đủ tài liệu để tiếp tục làm việc với bài toán của chính mình sau workshop.</p>
+        <p class="ticket-for">Bao gồm toàn bộ quyền lợi của Vé Tiêu chuẩn, cùng Recording Workshop để xem lại trong 04 tuần.</p>
         <ul class="perks">
-          <li><span class="yes" aria-hidden="true">✓</span><span>Tham gia trực tiếp 02 buổi Workshop Live Zoom</span></li>
-          <li><span class="yes" aria-hidden="true">✓</span><span>Trải nghiệm phương pháp La Bàn Bản Thể™</span></li>
-          <li><span class="yes" aria-hidden="true">✓</span><span>Bộ worksheet thực hành</span></li>
-          <li><span class="yes" aria-hidden="true">✓</span><span>Xem lại bản ghi hình trọn đời</span></li>
-          <li><span class="yes" aria-hidden="true">✓</span><span>Template La Bàn Bản Thể cá nhân</span></li>
-          <li><span class="yes" aria-hidden="true">✓</span><span>Ebook “Gỡ rối 5 nút thắt tâm lý khi đứng trước một ngã rẽ sự nghiệp”</span></li>
+          <li><span class="yes" aria-hidden="true">✓</span><span>02 buổi Workshop Live Zoom</span></li>
+          <li><span class="yes" aria-hidden="true">✓</span><span>Trải nghiệm La Bàn Bản Thể™</span></li>
+          <li><span class="yes" aria-hidden="true">✓</span><span>Worksheet thực hành</span></li>
+          <li><span class="yes" aria-hidden="true">✓</span><span>Recording xem lại trong 04 tuần</span></li>
         </ul>
-        <a class="btn btn-warm" href="#giu-cho">Giữ chỗ vé VIP — 149K <span class="arrow">→</span></a>
+        <a class="btn btn-warm" href="#giu-cho">Giữ chỗ Vé VIP — 99.000Đ <span class="arrow">→</span></a>
       </article>
     </div>
 
-    <p class="small center">Với Vé VIP, bạn có toàn bộ recording, template và ebook để quay lại nghiền ngẫm và áp dụng, thay vì chỉ nghe xong rồi để đó.</p>
+    <p class="small center">Vé VIP dành cho bạn nếu muốn có thêm thời gian quay lại những điều đã được mở ra trong Workshop, xem lại những phần mình chưa kịp nhìn thấy hoặc muốn ngẫm thêm sau buổi học.</p>
   </div>
 </section>
 
@@ -1004,19 +1059,29 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
   <div class="wrap split img-left xwide">
     <div class="col">
       <div class="head">
-        <h2 class="h2">Bạn không cần tin tôi trước khi tham gia.</h2>
+        <h2 class="h2">Bạn không cần biết trước câu trả lời.</h2>
       </div>
-      <ul class="facts">
-        <li>Bạn cũng không cần quyết định nghỉ việc.</li>
-        <li>Không cần quyết định chuyển ngành.</li>
-        <li>Không cần biết trước mình muốn làm gì.</li>
-        <li>Và càng không cần phải “sẵn sàng thay đổi cuộc đời”.</li>
+      <p>Bạn không cần biết chắc mình sẽ:</p>
+      <ul class="tags warm">
+        <li>nghỉ việc</li>
+        <li>ở lại</li>
+        <li>đổi công ty</li>
+        <li>đổi ngành</li>
+        <li>hay bắt đầu một con đường hoàn toàn mới</li>
       </ul>
-      <p>Chỉ cần bạn đang có một câu hỏi thật:</p>
-      <p class="pull">“Tôi có thực sự muốn tiếp tục con đường này không — và nếu không, tôi cần dựa vào đâu để biết mình nên đi về đâu?”</p>
-      <p>Hãy dành 2 buổi để dừng lại trước khi tiếp tục chạy. Không phải để nhận một câu trả lời được áp vào từ bên ngoài, mà để bắt đầu xây dựng cách bạn tự trả lời những quyết định lớn của chính mình.</p>
+      <p>Bạn cũng không cần phải có sẵn một nghề nghiệp trong đầu.</p>
+      <p>Chỉ cần đủ thành thật để thừa nhận rằng, đâu đó trong lòng, bạn vẫn luôn tự trăn trở: <em>“Liệu lựa chọn này của mình có đúng không?”</em></p>
+      <p>Và nếu bạn vẫn chưa biết câu trả lời, có lẽ điều cần hỏi tiếp không phải là <em>“Vậy tôi phải nghỉ việc hay ở lại?”</em> Mà là:</p>
+      <p class="pull">“Tôi đang dựa vào đâu để biết đâu mới là hướng đi đúng với mình?”</p>
+      <p>Trong 2 buổi Workshop, bạn sẽ có một khoảng dừng để nhìn lại câu hỏi ấy. Không phải để ai đó quyết định thay bạn. Mà để bạn bắt đầu nhìn rõ hơn mình đang đứng ở đâu, điều gì đang thực sự dẫn đường cho lựa chọn của mình và điều gì còn cần được nhìn thấy trước khi bước tiếp.</p>
       <div class="cta-row">
         <a class="btn btn-warm" href="#giu-cho">Tôi muốn nhìn rõ ngã rẽ của mình <span class="arrow">→</span></a>
+      </div>
+
+      <div class="guarantee">
+        <p class="g-title">Cam kết hoàn tiền 100% Vé VIP sau Buổi 1</p>
+        <p>Bạn không cần phải “đặt cược” 99.000Đ để xem Workshop này có thực sự dành cho mình hay không.</p>
+        <p>Nếu sau Buổi 1, bạn cảm thấy nội dung không phù hợp hoặc không mang lại giá trị như kỳ vọng, chỉ cần nhắn cho chúng tôi. Bạn sẽ được hoàn lại 100% giá trị Vé VIP. Không cần giải thích.</p>
       </div>
     </div>
 
@@ -1033,65 +1098,67 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
 <section class="tint">
   <div class="wrap faq-grid xwide">
     <div class="head">
-      <h2 class="h2">Những điều bạn có thể đang băn khoăn</h2>
+      <h2 class="h2">Giải đáp thắc mắc</h2>
     </div>
 
     <div class="faq">
       <details>
-        <summary>Tôi chưa định nghỉ việc. Có nên tham gia không?</summary>
+        <summary>“Tôi chưa chắc muốn nghỉ việc. Workshop này có dành cho tôi không?”</summary>
         <div class="answer">
-          <p>Có. Workshop không được thiết kế để thuyết phục bạn nghỉ việc.</p>
-          <p>Có thể sau workshop, bạn vẫn chọn ở lại. Cũng có thể bạn bắt đầu nhìn một hướng khác nghiêm túc hơn. Workshop không quyết định thay bạn.</p>
-          <p>Điều quan trọng là ở lại hay bước đi trở thành một lựa chọn có chủ đích, thay vì một quyết định được đưa ra vì sợ hãi hoặc kiệt sức.</p>
+          <p>Có. Workshop không được tạo ra để thuyết phục bạn nghỉ việc.</p>
+          <p>Nó giúp bạn nhìn rõ hơn bài toán phía sau câu hỏi ở lại hay rời đi, để bạn có thể cân nhắc lựa chọn của mình một cách phù hợp hơn với hoàn cảnh thực tế.</p>
         </div>
       </details>
 
       <details>
-        <summary>Công việc hiện tại của tôi khá tốt, thu nhập cũng tốt. Tôi có cần tham gia không?</summary>
+        <summary>“Công việc hiện tại của tôi thực ra khá tốt. Tôi chỉ cảm thấy có gì đó không ổn.”</summary>
         <div class="answer">
-          <p>Đặc biệt nếu bạn đang ở trạng thái: <em>“Mọi thứ nhìn bên ngoài đều ổn, nhưng tôi không chắc mình muốn sống như thế này thêm nhiều năm nữa.”</em> — thì đây chính là lúc đáng để dừng lại và nhìn kỹ.</p>
-          <p>Bạn không cần đợi đến khi công việc trở nên tồi tệ mới được phép đặt câu hỏi về hướng đi của mình.</p>
+          <p>Đó cũng là một lý do để dừng lại nhìn.</p>
+          <p>Một công việc có thể tốt trên nhiều phương diện nhưng vẫn chưa chắc phù hợp với giai đoạn cuộc đời và hướng đi bạn đang muốn xây.</p>
+          <p>Workshop giúp bạn bắt đầu nhìn sự nghiệp trong bức tranh lớn hơn ấy.</p>
         </div>
       </details>
 
       <details>
-        <summary>Tôi đã làm rất nhiều bài test hướng nghiệp rồi. Workshop này có gì khác?</summary>
+        <summary>“Tôi đã làm rất nhiều bài trắc nghiệm, đọc sách và tìm lời khuyên rồi. Workshop này có gì khác?”</summary>
         <div class="answer">
-          <p>Workshop không cố tìm một cái nhãn để nói bạn “hợp nghề gì”.</p>
-          <p>Bạn sẽ được dẫn qua một cách tiếp cận khác: thay vì tìm ngay câu trả lời, trước tiên làm rõ bài toán và cách bạn muốn đánh giá những lựa chọn trước mặt.</p>
+          <p>Thắc mắc này rất hợp lý.</p>
+          <p>Có thể bạn đã từng làm trắc nghiệm tính cách, viết SWOT, lập bảng ưu – nhược điểm, đọc sách, hỏi mentor, tìm thêm thông tin về các nghề nghiệp, thậm chí đã đổi công ty hoặc đổi vị trí.</p>
+          <p>Nhưng Workshop này không bắt đầu bằng việc hỏi <em>“Bạn nên làm nghề gì?”</em> — mà bắt đầu bằng việc nhìn lại bạn đang mắc kẹt ở đâu trước bước chuyển hiện tại.</p>
+          <ul class="ticks">
+            <li>Bạn chưa biết mình thực sự muốn gì?</li>
+            <li>Bạn có vài lựa chọn nhưng không biết chọn cái nào?</li>
+            <li>Hay bạn đã biết hướng mình muốn đi nhưng vẫn không thể bước tới?</li>
+          </ul>
+          <p>Bởi có thể vấn đề không phải là bạn chưa tìm đủ câu trả lời. Mà là bạn vẫn đang tìm câu trả lời ở một nơi chưa chạm đúng vào vấn đề.</p>
         </div>
       </details>
 
       <details>
-        <summary>Nếu vấn đề của tôi không phải nghề nghiệp mà là tôi đang quá kiệt sức thì sao?</summary>
+        <summary>“Tôi còn gia đình và rất nhiều trách nhiệm. Tôi không thể cứ thích là thay đổi.”</summary>
         <div class="answer">
-          <p>Đây cũng là một câu hỏi đáng được nhìn vào. Đôi khi chúng ta tưởng mình cần đổi nghề, trong khi điều mình thực sự cần là phục hồi năng lượng hoặc thay đổi cách đang sống và làm việc.</p>
-          <p>Workshop không ép bạn đi đến kết luận “phải thay đổi”. Nó giúp bạn nhìn rõ hơn bài toán mình đang thực sự cần giải quyết.</p>
+          <p>Workshop hoàn toàn không giả định rằng bạn có thể bỏ qua những điều đó.</p>
+          <p>Gia đình, con cái, tài chính, khoản vay, bảo hiểm, trách nhiệm hiện tại… đều là một phần của bài toán.</p>
+          <p>Điều quan trọng là đặt chúng đúng vị trí trong quá trình lựa chọn, thay vì mặc định rằng chúng là lý do duy nhất khiến bạn không thể thay đổi.</p>
         </div>
       </details>
 
       <details>
-        <summary>Tôi có gia đình, con cái và nhiều trách nhiệm. Phương pháp này có thực tế không?</summary>
+        <summary>“Nhưng nếu tham gia xong tôi vẫn không biết mình nên chọn gì thì sao?”</summary>
         <div class="answer">
-          <p>Có. Trách nhiệm không phải là thứ bạn phải phủ nhận để được sống cho mình.</p>
-          <p>Gia đình, con cái, tài chính, khoản vay và những điều bạn đã gây dựng đều là những biến số thật trong bài toán.</p>
-          <p>Mục tiêu không phải tìm một lựa chọn “tự do tuyệt đối”, mà là tìm một lựa chọn phù hợp hơn với con người và cuộc sống thật của bạn — kể cả những điều bạn không muốn đánh đổi.</p>
+          <p>Thì bạn không cần phải ép mình chọn ngay. Vì đó cũng không phải điều Workshop hứa với bạn.</p>
+          <p>Workshop “Ở Lại Hay Rời Đi?” không được tạo ra để đưa cho bạn một đáp án có sẵn về việc nên ở lại, đổi vai trò, đổi công ty hay chuyển hướng.</p>
+          <p>Nó giúp bạn làm một việc quan trọng hơn trước khi đưa ra quyết định lớn: <em>thay đổi điểm xuất phát của việc lựa chọn.</em></p>
+          <p>Bạn sẽ bắt đầu nhìn thấy bản đồ của một Điểm Tựa Bên Trong™ và nhận ra những phần mình cần tiếp tục làm rõ.</p>
+          <p>Bởi một quyết định nghề nghiệp lớn không trở nên đáng tin chỉ vì bạn đã quyết định thật nhanh. Nó trở nên đáng tin hơn khi bạn hiểu rõ mình đang chọn điều gì — và vì sao mình chọn nó.</p>
         </div>
       </details>
 
       <details>
-        <summary>Nếu sau workshop tôi vẫn chưa đưa ra quyết định cuối cùng thì sao?</summary>
+        <summary>“Tôi rất bận. Tôi sợ không theo được cả hai buổi.”</summary>
         <div class="answer">
-          <p>Không sao. Một quyết định lớn không nhất thiết phải được chốt trong hai buổi.</p>
-          <p>Điều quan trọng là bạn không còn đứng trước nó bằng trạng thái “Tôi không biết phải làm gì.”, mà biết rõ hơn: mình đang mắc ở đâu, điều gì thực sự quan trọng, mình còn cần làm rõ điều gì và bước tiếp theo là gì.</p>
-        </div>
-      </details>
-
-      <details>
-        <summary>Tôi rất bận, nếu không tham gia đủ 2 buổi trực tiếp thì sao?</summary>
-        <div class="answer">
-          <p>Bạn nên ưu tiên tham gia trực tiếp để có trải nghiệm đầy đủ nhất.</p>
-          <p>Nếu chọn Vé VIP, bạn sẽ được xem lại toàn bộ recording trọn đời và sử dụng các tài liệu đi kèm để tiếp tục làm việc với bài toán của mình sau workshop.</p>
+          <p>Nếu có thể, hãy ưu tiên tham gia Live vì phần trải nghiệm và thực hành là một phần quan trọng của Workshop.</p>
+          <p>Nếu bạn chọn Vé VIP, recording được lưu lại để bạn có thể xem lại trong 04 tuần, khi thuận tiện.</p>
         </div>
       </details>
     </div>
@@ -1102,22 +1169,24 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
 <section class="closing photo-bg">
   <div class="wrap col measure">
     <div class="head">
-      <h2 class="h2">Bạn không cần quyết định hôm nay.</h2>
+      <h2 class="h2">Cuối cùng, bạn không cần quyết định hôm nay.</h2>
     </div>
-    <p>Bạn chỉ cần thành thật với mình về một câu hỏi:</p>
-    <p class="q">Nếu không có gì thay đổi, tôi có muốn sống cuộc sống này thêm 5, 10 hay 20 năm nữa không?</p>
-    <p>Nếu câu trả lời khiến bạn phải dừng lại… có lẽ đã đến lúc bạn không cần chạy nhanh hơn. Bạn cần dừng lại đủ lâu để nhìn rõ mình đang đứng ở đâu.</p>
+    <p>Có thể bạn đã tự hỏi câu này rất nhiều lần:</p>
+    <p class="q">“Liệu lựa chọn này của mình có đúng không ta?”</p>
+    <p>Bạn đã thử tìm câu trả lời từ công việc. Từ một bài trắc nghiệm. Từ một lời khuyên. Từ một cơ hội mới.</p>
+    <p>Nhưng có những ngã rẽ không thể được giải quyết chỉ bằng cách tìm thêm một lựa chọn.</p>
+    <p>Đôi khi, điều bạn cần trước tiên là dừng lại đủ lâu để nhìn rõ mình đang đứng ở đâu — và mình đang dựa vào đâu để quyết định hướng đi tiếp theo.</p>
 
     <ul class="tally">
-      <li><span class="n">2</span> buổi workshop</li>
-      <li><span class="n">1</span> bài toán thật</li>
-      <li><span class="n">1</span> điểm tựa mới</li>
+      <li><span class="n">2</span> buổi để thôi giải nhầm bài toán</li>
+      <li><span class="n">1</span> cách khác để nhìn một ngã rẽ</li>
+      <li><span class="n">1</span> điểm tựa trước khi bước tiếp</li>
     </ul>
 
     <div class="cta-row">
-      <a class="btn btn-warm" href="#giu-cho">Giữ chỗ workshop ngay hôm nay <span class="arrow">→</span></a>
+      <a class="btn btn-warm" href="#giu-cho">Giữ chỗ workshop <span class="arrow">→</span></a>
     </div>
-    <p class="cta-note">Vé Tiêu chuẩn: 0Đ &nbsp;|&nbsp; Vé VIP: 149.000Đ &nbsp;|&nbsp; 2 buổi live Zoom, 13 &amp; 14/11/2026</p>
+    <p class="cta-note">Vé Tiêu chuẩn: 0Đ &nbsp;|&nbsp; Vé VIP: 99.000Đ — kèm Recording xem lại trong 04 tuần &nbsp;|&nbsp; 2 buổi live Zoom, 13 &amp; 14/11/2026</p>
   </div>
 </section>
 
