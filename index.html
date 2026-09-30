@@ -337,7 +337,7 @@ section[id]{scroll-margin-top:28px}
 /* danh sách ngắn thành các thẻ có dấu tick */
 .facts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
 .facts li{
-  display:flex;gap:14px;align-items:center;
+  display:flex;gap:14px;align-items:center;min-width:0;
   background:var(--surface);border-radius:6px;padding:14px 18px;
   font-size:1.12rem;font-weight:500;color:var(--ink);
   border-left:4px solid var(--accent);
@@ -393,6 +393,78 @@ section[id]{scroll-margin-top:28px}
   color:var(--warm-text);letter-spacing:-.01em;
 }
 .guarantee .g-title::before{content:"✓";margin-right:10px;font-family:var(--f-body);font-weight:700}
+
+/* ================= 2 trường hợp ở hero ================= */
+.cases{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.cases li{
+  position:relative;padding:14px 18px 14px 46px;
+  background:var(--surface);border-radius:6px;
+  border-left:4px solid var(--accent);
+  font-size:1.08rem;line-height:1.6;color:var(--ink-soft);
+  counter-increment:cs;
+}
+.cases li:nth-child(2){border-left-color:var(--warm)}
+.cases{counter-reset:cs}
+.cases li::before{
+  content:counter(cs);position:absolute;left:16px;top:14px;
+  font-family:var(--f-display);font-size:1.1rem;font-weight:600;color:var(--accent-text);
+}
+.cases li:nth-child(2)::before{color:var(--warm-text)}
+
+/* ================= mục lời hứa ================= */
+.promise-lead{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.rose-sm{width:74px;height:74px;color:var(--muted);flex:0 0 auto}
+.rose-sm .n{stroke:var(--warm)}
+.promise-label{
+  display:inline-block;
+  background:var(--accent-tint);color:var(--accent-text);
+  border-radius:100px;padding:7px 18px;
+  font-size:.86rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+}
+
+/* nút trên nền ngọc thẫm */
+.btn-band{background:var(--band-accent);color:var(--band)}
+.btn-band:hover{background:#fff;color:var(--band)}
+.center-row{justify-content:center}
+
+/* ================= đoạn dưới ảnh người hướng dẫn ================= */
+.under-figure{margin-top:26px}
+.under-figure strong{color:var(--ink)}
+
+/* ================= Trainer Profile ================= */
+.profile-wrap{margin-top:clamp(36px,5vw,56px)}
+.profile{
+  background:var(--band);color:var(--band-ink);border-radius:10px;
+  padding:clamp(28px,4vw,40px);
+  border-left:6px solid var(--warm);
+}
+.profile-label{
+  font-size:.82rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--band-accent);margin-bottom:10px;
+}
+.profile-name{
+  font-family:var(--f-display);font-weight:500;
+  font-size:clamp(1.6rem,1.2rem + 1.4vw,2.1rem);line-height:1.25;
+  letter-spacing:-.015em;color:var(--band-ink);margin-bottom:18px;
+}
+.profile-roles{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.profile-roles li{
+  position:relative;padding-left:26px;
+  font-size:1.04rem;line-height:1.62;color:var(--band-muted);
+}
+.profile-roles li::before{
+  content:"";position:absolute;left:0;top:.62em;
+  width:9px;height:9px;border-radius:50%;background:var(--warm);
+}
+.profile-roles strong{color:var(--band-ink);font-weight:600}
+
+/* ================= hotline ở chân trang ================= */
+.foot-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 22px}
+.foot-hotline{
+  color:var(--accent-text);font-weight:700;text-decoration:none;
+  border-bottom:2px solid var(--warm);padding-bottom:1px;
+}
+.foot-hotline:hover{color:var(--warm-text)}
 
 /* ================= chữ ký người hướng dẫn ================= */
 .bio{
@@ -600,6 +672,7 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
   .tickets{grid-template-columns:repeat(2,minmax(0,1fr))}
   .sessions{grid-template-columns:repeat(2,minmax(0,1fr))}
   .cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .cards.four{grid-template-columns:repeat(2,minmax(0,1fr))}
   .method{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;align-items:start}
   .method-aside{position:sticky;top:40px}
   .faq-grid{grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:56px;align-items:start}
@@ -660,12 +733,10 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
         <span class="for-label">Dành cho</span>
         <p>người đã đi làm nhiều năm nhưng vẫn mông lung, do dự trước những ngã rẽ sự nghiệp.</p>
       </div>
-      <p class="lede">Có thể bạn chưa biết mình thực sự muốn đi đâu. Hoặc bạn đã biết mình muốn gì, nhưng vẫn chưa thể bước tới với lựa chọn ấy.</p>
-      <p class="pull">Ở lại thì mòn mỏi.<br>Bước đi thì bất an.</p>
-      <div class="cta-row">
-        <a class="btn btn-warm" href="#giu-cho">Giữ chỗ workshop <span class="arrow">→</span></a>
-        <a class="jump" href="#hanh-trinh">Xem hành trình 2 buổi <span class="down" aria-hidden="true">↓</span></a>
-      </div>
+      <ul class="cases">
+        <li>Có thể bạn chưa biết mình thực sự muốn đi đâu.</li>
+        <li>Hoặc bạn đã biết mình muốn gì, nhưng vẫn chưa thể bước tới với lựa chọn ấy.</li>
+      </ul>
     </div>
 
     <!-- ảnh đặt cuối trong mã nguồn: điện thoại đọc chữ trước, ảnh theo sau -->
@@ -673,6 +744,35 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
       <div class="figure warm">
         <span class="frame" aria-hidden="true"></span>
         <img src="img/host-desk.jpg" width="1100" height="1637" alt="Người hướng dẫn workshop ngồi bên bàn làm việc với laptop và sổ tay">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== LỜI HỨA ========== -->
+<section class="deco promise">
+  <div class="wrap split top xwide">
+    <div class="promise-lead">
+      <svg class="rose rose-sm" viewBox="0 0 76 76" role="img" aria-label="Biểu tượng la bàn">
+        <circle cx="38" cy="38" r="33" fill="none" stroke="currentColor" stroke-width="1" opacity=".6"/>
+        <circle cx="38" cy="38" r="25" fill="none" stroke="currentColor" stroke-width="1" opacity=".3"/>
+        <path d="M38 5v7M38 64v7M5 38h7M64 38h7" stroke="currentColor" stroke-width="1" opacity=".6" fill="none"/>
+        <path d="M14.5 14.5l4.5 4.5M57 57l4.5 4.5M61.5 14.5L57 19M19 57l-4.5 4.5" stroke="currentColor" stroke-width="1" opacity=".35" fill="none"/>
+        <g class="needle-g">
+          <path class="n" d="M38 14l5 22-5 6-5-6z" fill="none" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M38 62l-5-22 5-6 5 6z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" opacity=".6"/>
+        </g>
+        <circle cx="38" cy="38" r="2" fill="currentColor"/>
+      </svg>
+      <p class="promise-label">Tự chủ định hướng sự nghiệp</p>
+      <p class="hero-claim">Thoát khỏi vòng lặp loay hoay trong sự nghiệp.</p>
+    </div>
+    <div class="col">
+      <p class="lede">Khám phá cách tự định hướng, lựa chọn, dấn thân và hiệu chỉnh để kiến tạo một hành trình sự nghiệp ý nghĩa, trọn vẹn theo cách riêng của mình.</p>
+      <p>Bạn không cần ép mình phải có ngay một đáp án cuối cùng.</p>
+      <p class="pull">Hãy bắt đầu bằng việc nhìn rõ điều gì đang dẫn đường cho những lựa chọn của mình.</p>
+      <div class="cta-row">
+        <a class="btn btn-warm" href="#giu-cho">Giữ chỗ workshop <span class="arrow">→</span></a>
       </div>
     </div>
   </div>
@@ -690,21 +790,6 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
   </div>
 </div>
 
-<!-- ========== LỜI HỨA ========== -->
-<section class="deco">
-  <div class="wrap split top xwide">
-    <p class="hero-claim">Thoát khỏi vòng lặp loay hoay trong sự nghiệp.</p>
-    <div class="col">
-      <p class="lede">Khám phá cách tự định hướng, lựa chọn, dấn thân và hiệu chỉnh để kiến tạo một hành trình sự nghiệp ý nghĩa, trọn vẹn theo cách riêng của mình.</p>
-      <p>Bạn không cần ép mình phải có ngay một đáp án cuối cùng.</p>
-      <p class="pull">Hãy bắt đầu bằng việc nhìn rõ điều gì đang dẫn đường cho những lựa chọn của mình.</p>
-      <div class="cta-row">
-        <a class="btn btn-warm" href="#giu-cho">Giữ chỗ workshop <span class="arrow">→</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ========== TÌNH TRẠNG ========== -->
 <section class="tint">
   <div class="wrap split xwide">
@@ -719,7 +804,7 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
       </ul>
       <p>Gia đình, con cái, khoản vay, bảo hiểm và những trách nhiệm đang có… khiến việc “cứ thế mà nghỉ” chưa bao giờ là một lựa chọn đơn giản.</p>
       <p>Nhìn từ bên ngoài, có lẽ bạn vẫn đang có một sự nghiệp mà nhiều người mong muốn. Nhưng bên trong, một câu hỏi ngày càng khó phớt lờ:</p>
-      <p class="pull">“Liệu mình có đang đi đúng hướng không ta?”</p>
+      <p class="pull">“Liệu mình có đang đi đúng hướng?”</p>
       <p>Và rồi bạn mắc kẹt giữa hai phía: <strong>ở lại thì mòn mỏi, bước đi thì bất an.</strong></p>
     </div>
 
@@ -823,6 +908,9 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
       <p>Và khi mọi thứ còn mập mờ, bạn rất khó nhận ra đâu mới là hướng đi đúng với mình, ngay cả khi một khả năng phù hợp đang ở ngay trước mắt.</p>
       <p class="pull">Có lẽ, trước khi cố tìm cho ra câu trả lời “Đâu mới là hướng đi đúng với mình?”, ta cần nhìn lại những điều mình có thể đang bỏ sót và điều gì không cần mang theo.</p>
       <p>Và đó cũng là điểm bắt đầu của La Bàn Bản Thể™.</p>
+      <div class="cta-row">
+        <a class="btn btn-warm" href="#giu-cho">Tôi muốn nhìn lại <span class="arrow">→</span></a>
+      </div>
     </div>
   </div>
 </section>
@@ -857,7 +945,10 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
         <li>Điều gì mình đang nhìn thấy — và điều gì có thể mình chưa nhìn thấy.</li>
         <li>Và điều gì còn cần được làm rõ trước một quyết định lớn.</li>
       </ul>
-      <p class="pull">Trong 2 buổi, bạn sẽ bắt đầu làm quen với cách nhìn của La Bàn Bản Thể™. Không phải để có ngay một đáp án. Mà để mở ra một cách khác để nhìn, lựa chọn và bước tiếp.</p>
+      <p class="pull">Trong 2 buổi, bạn sẽ bắt đầu <strong>làm quen với cách nhìn của La Bàn Bản Thể™ - k</strong>hông phải để có ngay một đáp án, mà <strong>để mở ra một cách khác để nhìn, lựa chọn và bước tiếp.</strong></p>
+      <div class="cta-row">
+        <a class="btn btn-band" href="#giu-cho">Đăng ký giữ chỗ <span class="arrow">→</span></a>
+      </div>
     </div>
   </div>
 </section>
@@ -929,13 +1020,16 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
       <h2 class="h2">Giá trị nhận được sau Workshop</h2>
     </div>
     <p class="lede center measure">Workshop này trao cho bạn những chìa khóa để:</p>
-    <ul class="cards">
+    <ul class="cards four">
       <li>Tìm về La Bàn Bản Thể™.</li>
       <li>Hiểu những nguyên lý gốc rễ để chuyển hoá sự loay hoay, mông lung thành sự rõ ràng, vững chãi.</li>
       <li>Tự tay xây dựng hệ quy chiếu dẫn đường cho những lựa chọn phía trước — trong bình an, vững vàng và tự chủ.</li>
       <li>Trở về để thấu hiểu, sáng rõ từ bên trong; bắt đầu bước đi như một người tự dẫn dắt chính mình trong đời sống thật.</li>
     </ul>
     <p class="note">Bạn không cần ép mình phải có ngay một đáp án cuối cùng. Một quyết định lớn không nhất thiết phải được chốt trong hai buổi — điều thay đổi là <em>cách bạn đứng trước quyết định đó</em>.</p>
+    <div class="cta-row center-row">
+      <a class="btn btn-warm" href="#giu-cho">Đăng ký giữ chỗ <span class="arrow">→</span></a>
+    </div>
   </div>
 </section>
 
@@ -956,6 +1050,9 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
       <p>Bởi khi đứng trước một bước ngoặt lớn, điều khiến chúng ta loay hoay đôi khi không phải vì thiếu lựa chọn. Mà vì vẫn đang đánh giá những lựa chọn của hôm nay bằng một cách nhìn từng rất đúng với mình trước đây nhưng không còn đủ cho giai đoạn cuộc đời hiện tại.</p>
       <p>Chính khoảng lệch ấy tạo ra những giằng co, mâu thuẫn và cảm giác mông lung, ngay cả khi trước mắt có những cơ hội rất phù hợp.</p>
       <p>La Bàn Bản Thể™ giúp bạn nhận ra điều gì cần được nhìn lại trước khi lựa chọn — để từ đó bắt đầu hình thành một điểm tựa rõ hơn khi nhìn những cơ hội sự nghiệp trước mắt và bước tiếp với hướng đi mình lựa chọn.</p>
+      <div class="cta-row center-row">
+        <a class="btn btn-warm" href="#giu-cho">Đăng ký giữ chỗ <span class="arrow">→</span></a>
+      </div>
     </div>
   </div>
 </section>
@@ -972,22 +1069,11 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
       <ul class="facts">
         <li>Có lúc không biết mình thực sự muốn gì, nên ở lại mà lòng vẫn bứt rứt.</li>
         <li>Có lúc biết mình muốn gì rồi, nhưng vẫn không dám bước vì những điều phải đánh đổi.</li>
-        <li>Có lúc đã sang một “bến mới”, nhưng tâm trí vẫn quanh quẩn với những câu hỏi cũ: <em>“Liệu mình có đang đi đúng hướng không ta?”</em>, <em>“Đâu mới là hướng đi đúng với mình?”</em></li>
+        <li><span>Có lúc đã sang một “bến mới”, nhưng tâm trí vẫn quanh quẩn với những câu hỏi cũ: <em>“Liệu mình có đang đi đúng hướng?”</em>, <em>“Đâu mới là hướng đi đúng với mình?”</em></span></li>
       </ul>
       <p>Và rồi mình nhận ra: không phải lúc nào điều mình cần cũng là một công việc mới.</p>
       <p>Càng học sâu về khai vấn, càng có cơ hội đồng hành cùng những người đang đứng trước câu hỏi <em>“Ở lại hay Rời đi?”</em>, mình càng nhìn rõ một điều:</p>
       <p class="pull">Điều khiến chúng ta mắc kẹt đôi khi không phải vì thiếu một cơ hội tốt. Mà vì cách mình đang nhìn tình huống và những lựa chọn trước mắt có thể chưa còn đủ để giúp mình nhận ra đâu là hướng đi phù hợp với mình ở thời điểm hiện tại.</p>
-      <p>Từ những trải nghiệm của chính mình, cùng quá trình học hỏi, nghiên cứu và đồng hành 1:1, mình từng bước hệ thống hóa những điều đã giúp mình nhìn lại và định hướng khác đi thành La Bàn Bản Thể™.</p>
-      <p>Mình không mong bạn phải mất nhiều năm chần chừ trước thay đổi, rồi thay đổi xong vẫn tiếp tục hoang mang — như mình và nhiều người khác từng trải qua — mới bắt đầu nhìn thấy điều này.</p>
-      <p>Nếu bạn đang đứng ở một ngã rẽ, có lẽ điều đáng để bắt đầu không phải là vội tìm một đáp án. Mà là dành thời gian nhìn lại cách mình đang đứng trước lựa chọn ấy.</p>
-
-      <div class="bio">
-        <p class="bio-name">Coach Thy Huỳnh</p>
-        <p class="bio-role">Practitioner Coach – EMCC Certified</p>
-        <p class="bio-role">Coach – Trainer – Mentor về Sự nghiệp • Chuyển hóa nội tâm</p>
-        <p class="bio-role">Founder S.O.I – Không gian Khai vấn &amp; Học tập Chuyển hóa Nội tâm</p>
-        <p class="bio-role">Người phát triển phương pháp La Bàn Bản Thể™</p>
-      </div>
     </div>
 
     <div class="split-figure">
@@ -995,6 +1081,24 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
         <span class="frame" aria-hidden="true"></span>
         <img src="img/host-portrait.jpg" width="1200" height="1026" loading="lazy" alt="Chân dung người hướng dẫn workshop">
       </div>
+      <div class="col under-figure">
+        <p>Từ những trải nghiệm của chính mình, cùng quá trình học hỏi, nghiên cứu và đồng hành 1:1, mình từng bước hệ thống hóa những điều đã giúp mình nhìn lại và định hướng khác đi thành La Bàn Bản Thể™.</p>
+        <p>Mình không mong bạn phải mất nhiều năm chần chừ trước thay đổi, rồi thay đổi xong vẫn tiếp tục hoang mang — như mình và nhiều người khác từng trải qua — mới bắt đầu nhìn thấy điều này.</p>
+        <p><strong>Nếu bạn đang đứng ở một ngã rẽ, có lẽ điều đáng để bắt đầu không phải là vội tìm một đáp án, mà là dành thời gian nhìn lại cách mình đang đứng trước lựa chọn ấy.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap block profile-wrap">
+    <div class="profile">
+      <p class="profile-label">Trainer Profile</p>
+      <p class="profile-name">Coach Thy Huỳnh</p>
+      <ul class="profile-roles">
+        <li>Practitioner Coach – EMCC Certified</li>
+        <li>Coach – Trainer – Mentor về Ra quyết định trong Sự nghiệp, Hôn nhân &amp; Lối sống <strong>với khả năng Tự Định Hướng từ Bên Trong.</strong></li>
+        <li>Founder S.O.I – Đồng hành Phát triển Khả năng Tự Định Hướng từ Bên Trong</li>
+        <li>Người phát triển phương pháp La Bàn Bản Thể™</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -1073,7 +1177,7 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
       <p>Chỉ cần đủ thành thật để thừa nhận rằng, đâu đó trong lòng, bạn vẫn luôn tự trăn trở: <em>“Liệu lựa chọn này của mình có đúng không?”</em></p>
       <p>Và nếu bạn vẫn chưa biết câu trả lời, có lẽ điều cần hỏi tiếp không phải là <em>“Vậy tôi phải nghỉ việc hay ở lại?”</em> Mà là:</p>
       <p class="pull">“Tôi đang dựa vào đâu để biết đâu mới là hướng đi đúng với mình?”</p>
-      <p>Trong 2 buổi Workshop, bạn sẽ có một khoảng dừng để nhìn lại câu hỏi ấy. Không phải để ai đó quyết định thay bạn. Mà để bạn bắt đầu nhìn rõ hơn mình đang đứng ở đâu, điều gì đang thực sự dẫn đường cho lựa chọn của mình và điều gì còn cần được nhìn thấy trước khi bước tiếp.</p>
+      <p>Trong 2 buổi Workshop, bạn sẽ có một khoảng dừng để nhìn lại câu hỏi ấy – không phải để ai đó quyết định thay bạn, mà để bạn bắt đầu nhìn rõ hơn <strong>mình đang đứng ở đâu, điều gì đang thực sự dẫn đường cho lựa chọn của mình và điều gì còn cần được nhìn thấy trước khi bước tiếp.</strong></p>
       <div class="cta-row">
         <a class="btn btn-warm" href="#giu-cho">Tôi muốn nhìn rõ ngã rẽ của mình <span class="arrow">→</span></a>
       </div>
@@ -1173,7 +1277,7 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
     </div>
     <p>Có thể bạn đã tự hỏi câu này rất nhiều lần:</p>
     <p class="q">“Liệu lựa chọn này của mình có đúng không ta?”</p>
-    <p>Bạn đã thử tìm câu trả lời từ công việc. Từ một bài trắc nghiệm. Từ một lời khuyên. Từ một cơ hội mới.</p>
+    <p>Bạn đã thử tìm câu trả lời từ công việc, từ một bài trắc nghiệm, từ một lời khuyên, từ một cơ hội mới.</p>
     <p>Nhưng có những ngã rẽ không thể được giải quyết chỉ bằng cách tìm thêm một lựa chọn.</p>
     <p>Đôi khi, điều bạn cần trước tiên là dừng lại đủ lâu để nhìn rõ mình đang đứng ở đâu — và mình đang dựa vào đâu để quyết định hướng đi tiếp theo.</p>
 
@@ -1196,7 +1300,10 @@ footer{padding-block:34px;border-top:1px solid var(--rule-soft)}
       <img class="logo" src="img/logo-soi.png" width="440" height="186" loading="lazy" alt="S.O.I — Shift. Own. Integrate.">
       <span>La Bàn Bản Thể™ · Workshop “Ở lại hay rời đi?”</span>
     </div>
-    <span>2 buổi live Zoom · 13 &amp; 14/11/2026</span>
+    <div class="foot-meta">
+      <span>2 buổi live Zoom · 13 &amp; 14/11/2026</span>
+      <a class="foot-hotline" href="tel:+84931349343">Hotline S.O.I: 0931 349 343</a>
+    </div>
   </div>
 </footer>
 
